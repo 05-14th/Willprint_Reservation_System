@@ -42,36 +42,42 @@ namespace Willprint_Reservation_System
         {
             state = 6;
             LoadDataIntoDataGridView();
+            panel2.Visible = false;
         }
 
         private void button8_Click(object sender, EventArgs e)
         {
             state = 2;
             LoadDataIntoDataGridView();
+            panel2.Visible = false;
         }
 
         private void button9_Click(object sender, EventArgs e)
         {
             state = 3;
             LoadDataIntoDataGridView();
+            panel2.Visible = false;
         }
 
         private void button10_Click(object sender, EventArgs e)
         {
             state = 4;
             LoadDataIntoDataGridView();
+            panel2.Visible = false;
         }
 
         private void button11_Click(object sender, EventArgs e)
         {
             state = 5;
             LoadDataIntoDataGridView();
+            panel2.Visible = false;
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
             state = 1;
             LoadDataIntoDataGridView();
+            panel2.Visible = false;
         }
 
         private void button14_Click(object sender, EventArgs e)
@@ -178,18 +184,21 @@ namespace Willprint_Reservation_System
         {
             state = 7;
             LoadDataIntoDataGridView();
+            panel2.Visible = false;
         }
 
         private void button14_Click_1(object sender, EventArgs e)
         {
             state = 8;
             LoadDataIntoDataGridView();
+            panel2.Visible = false;
         }
 
         private void button15_Click(object sender, EventArgs e)
         {
             state = 9;
             LoadDataIntoDataGridView();
+            panel2.Visible = false;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -330,6 +339,11 @@ namespace Willprint_Reservation_System
         private void button3_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

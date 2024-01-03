@@ -23,6 +23,7 @@ namespace Willprint_Reservation_System
         {
             InitializeComponent();
             InitializeDB();
+            textBox2.UseSystemPasswordChar = true;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -38,7 +39,7 @@ namespace Willprint_Reservation_System
             }
             else
             {
-                MessageBox.Show("Invalid username or password!");
+                MessageBox.Show("Invalid username or password!", "Invalid Credentials", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -78,10 +79,27 @@ namespace Willprint_Reservation_System
                 }
 
                 reader.Close();
+                connection.Close();
             }
 
             return result;
         }
 
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked)
+            {
+                textBox2.UseSystemPasswordChar = false;
+            }
+            else
+            {
+                textBox2.UseSystemPasswordChar = true;
+            }
+        }
     }
 }
