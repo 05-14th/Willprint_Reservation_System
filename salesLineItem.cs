@@ -10,31 +10,16 @@ using System.Windows.Forms;
 
 namespace Willprint_Reservation_System
 {
-    public partial class Form3 : Form
+    public partial class salesLineItem : Form
     {
-        public Form3()
+        public salesLineItem()
         {
             InitializeComponent();
         }
 
-        private void textBox2_TextChanged(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
+            this.Close();
         }
 
         private void label3_Click(object sender, EventArgs e)
@@ -45,11 +30,6 @@ namespace Willprint_Reservation_System
         private void button1_Click(object sender, EventArgs e)
         {
 
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            this.Close();
         }
     }
 }

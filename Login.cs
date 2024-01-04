@@ -12,14 +12,14 @@ using System.Windows.Forms;
 
 namespace Willprint_Reservation_System
 {
-    public partial class Form1 : Form
+    public partial class Login : Form
     {
         private MySqlConnection connection;
         private string server;
         private string database;
         private string uid;
         private string password;
-        public Form1()
+        public Login()
         {
             InitializeComponent();
             InitializeDB();
@@ -34,7 +34,7 @@ namespace Willprint_Reservation_System
             if (CheckLogin(username, password))
             {
                 this.Hide();
-                Form2 form2 = new Form2();
+                main form2 = new main();
                 form2.ShowDialog();
             }
             else

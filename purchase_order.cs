@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Willprint_Reservation_System
 {
-    public partial class Form11 : Form
+    public partial class purchase_order : Form
     {
-        public Form11()
+        public purchase_order()
         {
             InitializeComponent();
         }
@@ -20,6 +20,11 @@ namespace Willprint_Reservation_System
         private void button2_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

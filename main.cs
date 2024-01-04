@@ -12,11 +12,11 @@ using MySql.Data.MySqlClient;
 
 namespace Willprint_Reservation_System
 {
-    public partial class Form2 : Form
+    public partial class main : Form
     {
         private const string connectionString = "server=localhost;database=willprint;user=root;password=";
         private int state = 1;
-        public Form2()
+        public main()
         {
             InitializeComponent();
             InitializeUI();
@@ -213,55 +213,55 @@ namespace Willprint_Reservation_System
                         // Query to fetch data from a table (Replace TableName with your table name)
                         if (state == 1)
                         {
-                            Form3 form3 = new Form3();
+                            customers form3 = new customers();
                             form3.ShowDialog();
                             panel2.Visible = false;
                         }
                         else if (state == 2)
                         {
-                            Form4 form4 = new Form4();
+                            employee form4 = new employee();
                             form4.ShowDialog();
                             panel2.Visible = false;
                         }
                         else if (state == 3)
                         {
-                            Form5 form5 = new Form5();
+                            salerOrder form5 = new salerOrder();
                             form5.ShowDialog();
                             panel2.Visible = false;
                         }
                         else if (state == 4)
                         {
-                            Form6 form6 = new Form6();
+                            payment form6 = new payment();
                             form6.ShowDialog();
                             panel2.Visible = false;
                         }
                         else if (state == 5)
                         {
-                            Form7 form7 = new Form7();
+                            purchase_order form7 = new purchase_order();
                             form7.ShowDialog();
                             panel2.Visible = false;
                         }
                         else if (state == 6)
                         {
-                            Form11 form11 = new Form11();
+                            inventory form11 = new inventory();
                             form11.ShowDialog();
                             panel2.Visible = false;
                         }
                         else if (state == 7)
                         {
-                            Form8 form8 = new Form8();
+                            orderLineItem form8 = new orderLineItem();
                             form8.ShowDialog();
                             panel2.Visible = false;
                         }
                         else if (state == 8)
                         {
-                            Form9 form9 = new Form9();
+                            salesLineItem form9 = new salesLineItem();
                             form9.ShowDialog();
                             panel2.Visible = false;
                         }
                         else if (state == 9)
                         {
-                            Form10 form10 = new Form10();
+                            products form10 = new products();
                             form10.ShowDialog();
                             panel2.Visible = false;
                         }
@@ -343,7 +343,57 @@ namespace Willprint_Reservation_System
 
         private void button2_Click_1(object sender, EventArgs e)
         {
+            if (state == 1)
+            {
+                customers customerUi = new customers();
+                customerUi.ShowDialog();
+            }
+            else if (state == 2)
+            {
+                employee employeeUi = new employee();
+                employeeUi.ShowDialog();
+            }
+            else if (state == 3)
+            {
+                salerOrder salesOrderUi = new salerOrder();
+                salesOrderUi.ShowDialog();
+            }
+            else if (state == 4)
+            {
+                payment paymentUi = new payment();
+                paymentUi.ShowDialog();
+            }
+            else if (state == 5)
+            {
+                purchase_order poUi = new purchase_order();
+                poUi.ShowDialog();
+            }
+            else if (state == 6)
+            {
+                inventory inventoryUi = new inventory();
+                inventoryUi.ShowDialog();
+            }
+            else if (state == 7)
+            {
+                orderLineItem oliUi = new orderLineItem();
+                oliUi.ShowDialog();
+            }
+            else if (state == 8)
+            {
+                salesLineItem sliUi = new salesLineItem();
+                sliUi.ShowDialog();
+            }
+            else if (state == 9)
+            {
+                products productsUi = new products();
+                productsUi.ShowDialog();
+            }
+        }
 
+        private void button16_Click(object sender, EventArgs e)
+        {
+            search searchUi = new search();
+            searchUi.ShowDialog();
         }
     }
 }

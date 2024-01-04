@@ -1,6 +1,6 @@
 ﻿namespace Willprint_Reservation_System
 {
-    partial class Form11
+    partial class inventory
     {
         /// <summary>
         /// Required designer variable.
@@ -47,11 +47,11 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Gill Sans Ultra Bold", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(78, 9);
+            this.label1.Location = new System.Drawing.Point(43, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(317, 42);
+            this.label1.Size = new System.Drawing.Size(372, 42);
             this.label1.TabIndex = 0;
-            this.label1.Text = "ADD INVENTORY";
+            this.label1.Text = "ADD TO INVENTORY";
             // 
             // label2
             // 
@@ -160,7 +160,7 @@
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // Form11
+            // inventory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -177,9 +177,9 @@
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "Form11";
-            this.Text = "Form11";
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Name = "inventory";
+            this.Text = "Add to Inventory";
             this.ResumeLayout(false);
             this.PerformLayout();
 

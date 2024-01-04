@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Willprint_Reservation_System
 {
-    public partial class Form5 : Form
+    public partial class salerOrder : Form
     {
-        public Form5()
+        public salerOrder()
         {
             InitializeComponent();
         }

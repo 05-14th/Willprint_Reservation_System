@@ -1,6 +1,6 @@
 ﻿namespace Willprint_Reservation_System
 {
-    partial class Form9
+    partial class salesLineItem
     {
         /// <summary>
         /// Required designer variable.
@@ -104,9 +104,9 @@
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(27, 63);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(89, 14);
+            this.label1.Size = new System.Drawing.Size(34, 14);
             this.label1.TabIndex = 19;
-            this.label1.Text = "Supplier Order ID";
+            this.label1.Text = "Sales";
             // 
             // textBox1
             // 
@@ -116,7 +116,7 @@
             this.textBox1.Size = new System.Drawing.Size(338, 20);
             this.textBox1.TabIndex = 18;
             // 
-            // Form9
+            // salesLineItem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -129,9 +129,9 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "Form9";
-            this.Text = "Form9";
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Name = "salesLineItem";
+            this.Text = "Add Sales Line Item";
             this.ResumeLayout(false);
             this.PerformLayout();
 
