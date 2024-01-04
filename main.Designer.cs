@@ -77,6 +77,7 @@
             this.button17.TabIndex = 6;
             this.button17.Text = "Logout";
             this.button17.UseVisualStyleBackColor = false;
+            this.button17.Click += new System.EventHandler(this.button17_Click);
             // 
             // button16
             // 

@@ -59,12 +59,24 @@ namespace Willprint_Reservation_System
 
         private void textBox4_TextChanged(object sender, EventArgs e)
         {
+            string text = textBox4.Text;
 
+            if (!string.IsNullOrEmpty(text) && !text.All(char.IsDigit))
+            {
+                textBox4.Text = string.Join("", text.Where(char.IsDigit));
+                textBox4.SelectionStart = textBox4.Text.Length;
+            }
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
+            string text = textBox2.Text;
 
+            if (!string.IsNullOrEmpty(text) && !text.All(char.IsDigit))
+            {
+                textBox2.Text = string.Join("", text.Where(char.IsDigit));
+                textBox2.SelectionStart = textBox2.Text.Length;
+            }
         }
     }
 }

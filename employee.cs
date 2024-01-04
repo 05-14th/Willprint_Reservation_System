@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Willprint_Reservation_System
 {
@@ -21,5 +22,22 @@ namespace Willprint_Reservation_System
         {
             this.Close();
         }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+            string text = textBox3.Text;
+
+            if (!string.IsNullOrEmpty(text) && !text.All(char.IsDigit))
+            {
+                textBox3.Text = string.Join("", text.Where(char.IsDigit));
+                textBox3.SelectionStart = textBox3.Text.Length;
+            }
+        }
     }
+    
 }

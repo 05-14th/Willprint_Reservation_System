@@ -19,7 +19,13 @@ namespace Willprint_Reservation_System
 
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
+            string text = textBox2.Text;
 
+            if (!string.IsNullOrEmpty(text) && !text.All(char.IsDigit))
+            {
+                textBox2.Text = string.Join("", text.Where(char.IsDigit));
+                textBox2.SelectionStart = textBox2.Text.Length; 
+            }
         }
 
         private void label2_Click(object sender, EventArgs e)

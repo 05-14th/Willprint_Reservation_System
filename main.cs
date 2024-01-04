@@ -395,5 +395,12 @@ namespace Willprint_Reservation_System
             search searchUi = new search();
             searchUi.ShowDialog();
         }
+
+        private void button17_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            Login loginUi = new Login();
+            loginUi.Show();
+        }
     }
 }
