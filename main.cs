@@ -347,6 +347,7 @@ namespace Willprint_Reservation_System
             {
                 customers customerUi = new customers();
                 customerUi.ShowDialog();
+                LoadDataIntoDataGridView();
             }
             else if (state == 2)
             {
