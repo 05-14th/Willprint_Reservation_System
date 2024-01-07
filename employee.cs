@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,6 +14,7 @@ namespace Willprint_Reservation_System
 {
     public partial class employee : Form
     {
+        private const string connectionString = "server=localhost;database=willprint;user=root;password=";
         public employee()
         {
             InitializeComponent();
@@ -30,12 +32,59 @@ namespace Willprint_Reservation_System
 
         private void textBox3_TextChanged(object sender, EventArgs e)
         {
-            string text = textBox3.Text;
+            string text = empCon.Text;
 
             if (!string.IsNullOrEmpty(text) && !text.All(char.IsDigit))
             {
-                textBox3.Text = string.Join("", text.Where(char.IsDigit));
-                textBox3.SelectionStart = textBox3.Text.Length;
+                empCon.Text = string.Join("", text.Where(char.IsDigit));
+                empCon.SelectionStart = empCon.Text.Length;
+            }
+        }
+        private string FormatPhoneNumber(string phoneNumber)
+        {
+            if (phoneNumber.Length == 11)
+            {
+                return $"{phoneNumber.Substring(0, 4)}-{phoneNumber.Substring(4, 3)}-{phoneNumber.Substring(7)}";
+            }
+            else
+            {
+                return phoneNumber;
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+
+                    string query = "INSERT INTO employee(name,position,contact) VALUES (@empName, @empPos,@empContact)";
+
+                    using (MySqlCommand command = new MySqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@empName", empName.Text);
+                        command.Parameters.AddWithValue("@empPos", empPos.Text);
+                        command.Parameters.AddWithValue("@empContact", FormatPhoneNumber(empCon.Text));
+
+                        int result = command.ExecuteNonQuery();
+
+                        if (result > 0)
+                        {
+                            this.Close();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Something Went Wrong", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            this.Close();
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message);
+                }
             }
         }
     }

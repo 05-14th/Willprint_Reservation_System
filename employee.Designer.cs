@@ -33,10 +33,10 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.empName = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.empCon = new System.Windows.Forms.TextBox();
+            this.empPos = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // button2
@@ -65,6 +65,7 @@
             this.button1.TabIndex = 12;
             this.button1.Text = "INSERT";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label3
             // 
@@ -102,13 +103,13 @@
             this.label1.TabIndex = 8;
             this.label1.Text = "Name";
             // 
-            // textBox1
+            // empName
             // 
-            this.textBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.textBox1.Location = new System.Drawing.Point(42, 76);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(338, 20);
-            this.textBox1.TabIndex = 7;
+            this.empName.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.empName.Location = new System.Drawing.Point(42, 76);
+            this.empName.Name = "empName";
+            this.empName.Size = new System.Drawing.Size(338, 20);
+            this.empName.TabIndex = 7;
             // 
             // label4
             // 
@@ -122,30 +123,30 @@
             this.label4.TabIndex = 15;
             this.label4.Text = "Contact";
             // 
-            // textBox3
+            // empCon
             // 
-            this.textBox3.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.textBox3.Location = new System.Drawing.Point(42, 156);
-            this.textBox3.MaxLength = 11;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(338, 20);
-            this.textBox3.TabIndex = 14;
-            this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
+            this.empCon.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.empCon.Location = new System.Drawing.Point(42, 156);
+            this.empCon.MaxLength = 11;
+            this.empCon.Name = "empCon";
+            this.empCon.Size = new System.Drawing.Size(338, 20);
+            this.empCon.TabIndex = 14;
+            this.empCon.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
-            // comboBox1
+            // empPos
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.empPos.FormattingEnabled = true;
+            this.empPos.Items.AddRange(new object[] {
             "Owner",
             "Manager",
             "Assistant Manager",
             "Cashier",
             "Staff"});
-            this.comboBox1.Location = new System.Drawing.Point(42, 114);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(338, 22);
-            this.comboBox1.TabIndex = 16;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.empPos.Location = new System.Drawing.Point(42, 114);
+            this.empPos.Name = "empPos";
+            this.empPos.Size = new System.Drawing.Size(338, 22);
+            this.empPos.TabIndex = 16;
+            this.empPos.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // employee
             // 
@@ -153,15 +154,15 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Crimson;
             this.ClientSize = new System.Drawing.Size(419, 281);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.empPos);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.empCon);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.empName);
             this.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.Color.White;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
@@ -179,9 +180,9 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox empName;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.TextBox empCon;
+        private System.Windows.Forms.ComboBox empPos;
     }
 }

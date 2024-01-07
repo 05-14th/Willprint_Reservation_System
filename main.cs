@@ -353,41 +353,49 @@ namespace Willprint_Reservation_System
             {
                 employee employeeUi = new employee();
                 employeeUi.ShowDialog();
+                LoadDataIntoDataGridView();
             }
             else if (state == 3)
             {
                 salerOrder salesOrderUi = new salerOrder();
                 salesOrderUi.ShowDialog();
+                LoadDataIntoDataGridView();
             }
             else if (state == 4)
             {
                 payment paymentUi = new payment();
                 paymentUi.ShowDialog();
+                LoadDataIntoDataGridView();
             }
             else if (state == 5)
             {
                 purchase_order poUi = new purchase_order();
                 poUi.ShowDialog();
+                LoadDataIntoDataGridView();
             }
             else if (state == 6)
             {
                 inventory inventoryUi = new inventory();
                 inventoryUi.ShowDialog();
+                LoadDataIntoDataGridView();
             }
             else if (state == 7)
             {
                 orderLineItem oliUi = new orderLineItem();
                 oliUi.ShowDialog();
+                LoadDataIntoDataGridView();
             }
             else if (state == 8)
             {
                 salesLineItem sliUi = new salesLineItem();
                 sliUi.ShowDialog();
+                LoadDataIntoDataGridView();
             }
             else if (state == 9)
             {
                 products productsUi = new products();
                 productsUi.ShowDialog();
+                LoadDataIntoDataGridView();
             }
         }
 
