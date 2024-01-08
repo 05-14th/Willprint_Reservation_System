@@ -33,10 +33,12 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.soCusId = new System.Windows.Forms.TextBox();
-            this.idNum = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.soCusID = new System.Windows.Forms.ComboBox();
+            this.userView = new System.Windows.Forms.Label();
+            this.idNum = new System.Windows.Forms.ComboBox();
+            this.productView = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // button2
@@ -101,23 +103,6 @@
             this.label5.TabIndex = 22;
             this.label5.Text = "Date";
             // 
-            // soCusId
-            // 
-            this.soCusId.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.soCusId.Location = new System.Drawing.Point(16, 74);
-            this.soCusId.Name = "soCusId";
-            this.soCusId.Size = new System.Drawing.Size(338, 20);
-            this.soCusId.TabIndex = 17;
-            // 
-            // idNum
-            // 
-            this.idNum.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.idNum.Location = new System.Drawing.Point(16, 152);
-            this.idNum.Name = "idNum";
-            this.idNum.Size = new System.Drawing.Size(337, 20);
-            this.idNum.TabIndex = 23;
-            this.idNum.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
-            // 
             // label4
             // 
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -139,20 +124,65 @@
             this.dateTimePicker1.TabIndex = 25;
             this.dateTimePicker1.Value = new System.DateTime(2024, 1, 8, 23, 7, 7, 0);
             // 
+            // soCusID
+            // 
+            this.soCusID.FormattingEnabled = true;
+            this.soCusID.Location = new System.Drawing.Point(16, 75);
+            this.soCusID.Name = "soCusID";
+            this.soCusID.Size = new System.Drawing.Size(233, 21);
+            this.soCusID.TabIndex = 26;
+            this.soCusID.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // userView
+            // 
+            this.userView.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.userView.AutoSize = true;
+            this.userView.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.userView.ForeColor = System.Drawing.Color.White;
+            this.userView.Location = new System.Drawing.Point(255, 78);
+            this.userView.Name = "userView";
+            this.userView.Size = new System.Drawing.Size(99, 14);
+            this.userView.TabIndex = 27;
+            this.userView.Text = "Nothing is Selected";
+            this.userView.Click += new System.EventHandler(this.userView_Click);
+            // 
+            // idNum
+            // 
+            this.idNum.FormattingEnabled = true;
+            this.idNum.Location = new System.Drawing.Point(16, 152);
+            this.idNum.Name = "idNum";
+            this.idNum.Size = new System.Drawing.Size(233, 21);
+            this.idNum.TabIndex = 28;
+            this.idNum.SelectedIndexChanged += new System.EventHandler(this.idNum_SelectedIndexChanged);
+            // 
+            // productView
+            // 
+            this.productView.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.productView.AutoSize = true;
+            this.productView.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.productView.ForeColor = System.Drawing.Color.White;
+            this.productView.Location = new System.Drawing.Point(254, 155);
+            this.productView.Name = "productView";
+            this.productView.Size = new System.Drawing.Size(99, 14);
+            this.productView.TabIndex = 29;
+            this.productView.Text = "Nothing is Selected";
+            // 
             // salerOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Crimson;
             this.ClientSize = new System.Drawing.Size(370, 270);
+            this.Controls.Add(this.productView);
+            this.Controls.Add(this.idNum);
+            this.Controls.Add(this.userView);
+            this.Controls.Add(this.soCusID);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.idNum);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.soCusId);
             this.Controls.Add(this.label2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "salerOrder";
@@ -169,9 +199,11 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox soCusId;
-        private System.Windows.Forms.TextBox idNum;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.ComboBox soCusID;
+        private System.Windows.Forms.Label userView;
+        private System.Windows.Forms.ComboBox idNum;
+        private System.Windows.Forms.Label productView;
     }
 }

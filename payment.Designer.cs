@@ -31,12 +31,13 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.paymentAmount = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.paymentDate = new System.Windows.Forms.DateTimePicker();
+            this.customerID = new System.Windows.Forms.ComboBox();
+            this.userView = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // button2
@@ -44,7 +45,7 @@
             this.button2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.button2.BackColor = System.Drawing.Color.White;
             this.button2.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(18, 204);
+            this.button2.Location = new System.Drawing.Point(18, 205);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(338, 31);
             this.button2.TabIndex = 13;
@@ -57,12 +58,13 @@
             this.button1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.button1.BackColor = System.Drawing.Color.White;
             this.button1.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(18, 167);
+            this.button1.Location = new System.Drawing.Point(18, 168);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(338, 31);
             this.button1.TabIndex = 12;
             this.button1.Text = "INSERT";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label3
             // 
@@ -76,13 +78,15 @@
             this.label3.TabIndex = 11;
             this.label3.Text = "Amount";
             // 
-            // textBox2
+            // paymentAmount
             // 
-            this.textBox2.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.textBox2.Location = new System.Drawing.Point(18, 64);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(338, 20);
-            this.textBox2.TabIndex = 10;
+            this.paymentAmount.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.paymentAmount.Location = new System.Drawing.Point(18, 64);
+            this.paymentAmount.MaxLength = 11;
+            this.paymentAmount.Name = "paymentAmount";
+            this.paymentAmount.Size = new System.Drawing.Size(338, 20);
+            this.paymentAmount.TabIndex = 10;
+            this.paymentAmount.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // label2
             // 
@@ -108,14 +112,6 @@
             this.label4.TabIndex = 17;
             this.label4.Text = "Customer ID";
             // 
-            // textBox3
-            // 
-            this.textBox3.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.textBox3.Location = new System.Drawing.Point(18, 141);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(338, 20);
-            this.textBox3.TabIndex = 16;
-            // 
             // label5
             // 
             this.label5.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -128,28 +124,51 @@
             this.label5.TabIndex = 15;
             this.label5.Text = "Date";
             // 
-            // textBox4
+            // paymentDate
             // 
-            this.textBox4.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.textBox4.Location = new System.Drawing.Point(18, 102);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(338, 20);
-            this.textBox4.TabIndex = 14;
+            this.paymentDate.CustomFormat = "YYYY-MM-DD";
+            this.paymentDate.Location = new System.Drawing.Point(18, 102);
+            this.paymentDate.Name = "paymentDate";
+            this.paymentDate.Size = new System.Drawing.Size(338, 20);
+            this.paymentDate.TabIndex = 18;
+            // 
+            // customerID
+            // 
+            this.customerID.FormattingEnabled = true;
+            this.customerID.Location = new System.Drawing.Point(18, 141);
+            this.customerID.Name = "customerID";
+            this.customerID.Size = new System.Drawing.Size(233, 21);
+            this.customerID.TabIndex = 19;
+            this.customerID.SelectedIndexChanged += new System.EventHandler(this.customerID_SelectedIndexChanged);
+            // 
+            // userView
+            // 
+            this.userView.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.userView.AutoSize = true;
+            this.userView.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.userView.ForeColor = System.Drawing.Color.White;
+            this.userView.Location = new System.Drawing.Point(257, 144);
+            this.userView.Name = "userView";
+            this.userView.Size = new System.Drawing.Size(99, 14);
+            this.userView.TabIndex = 20;
+            this.userView.Text = "Nothing is Selected";
+            this.userView.Click += new System.EventHandler(this.userView_Click);
             // 
             // payment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Crimson;
-            this.ClientSize = new System.Drawing.Size(368, 252);
+            this.ClientSize = new System.Drawing.Size(368, 255);
+            this.Controls.Add(this.userView);
+            this.Controls.Add(this.customerID);
+            this.Controls.Add(this.paymentDate);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.textBox3);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.textBox4);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.paymentAmount);
             this.Controls.Add(this.label2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "payment";
@@ -164,11 +183,12 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox paymentAmount;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.DateTimePicker paymentDate;
+        private System.Windows.Forms.ComboBox customerID;
+        private System.Windows.Forms.Label userView;
     }
 }

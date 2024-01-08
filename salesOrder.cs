@@ -17,6 +17,51 @@ namespace Willprint_Reservation_System
         public salerOrder()
         {
             InitializeComponent();
+            PopulateComboBox();
+        }
+
+        private void PopulateComboBox()
+        {
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    string query = "SELECT customer_id FROM customers";
+                    string productQuery = "SELECT ps_id FROM product_and_services";
+                    MySqlCommand command = new MySqlCommand(query, connection);
+                    MySqlCommand pcommand = new MySqlCommand(productQuery, connection);
+
+                    using (MySqlDataReader reader = command.ExecuteReader())
+                    {
+                        soCusID.Items.Clear();
+
+                        while (reader.Read())
+                        {
+                            string valueToAdd = reader.GetString(0);
+                            soCusID.Items.Add(valueToAdd);
+                        }
+                    }
+
+                    using (MySqlDataReader reader = pcommand.ExecuteReader())
+                    {
+                        idNum.Items.Clear();
+
+                        while (reader.Read())
+                        {
+                            string valueToAdd = reader.GetString(0);
+                            idNum.Items.Add(valueToAdd);
+                        }
+                    }
+
+                    connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
         }
 
         private void InsertMissingIDs(MySqlConnection connection)
@@ -29,7 +74,7 @@ namespace Willprint_Reservation_System
 
                 if (!idExists)
                 {
-                    InsertID(connection, id, soCusId.Text, dateTimePicker1.Value, int.Parse(idNum.Text));
+                    InsertID(connection, id, soCusID.Text, dateTimePicker1.Value, int.Parse(idNum.Text));
                     break;
                 }
             }
@@ -98,6 +143,71 @@ namespace Willprint_Reservation_System
         private void textBox3_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void userView_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+                    string userSelected = soCusID.Text;
+                    string query = $"SELECT name FROM customers WHERE customer_id = {userSelected}";
+
+                    MySqlCommand command = new MySqlCommand(query, connection);
+
+                    using (MySqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            string userName = reader.GetString(0);
+                            userView.Text = userName;
+                        }
+                    }
+
+                    connection.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message);
+                }
+            }
+        }
+
+        private void idNum_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+                    string userSelected = idNum.Text;
+                    string query = $"SELECT pas FROM product_and_services WHERE ps_id = {userSelected}";
+
+                    MySqlCommand command = new MySqlCommand(query, connection);
+
+                    using (MySqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            string productName = reader.GetString(0);
+                            productView.Text = productName;
+                        }
+                    }
+
+                    connection.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message);
+                }
+            }
         }
     }
 }
