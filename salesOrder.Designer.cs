@@ -39,6 +39,8 @@
             this.userView = new System.Windows.Forms.Label();
             this.idNum = new System.Windows.Forms.ComboBox();
             this.productView = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // button2
@@ -75,9 +77,9 @@
             this.label3.ForeColor = System.Drawing.Color.White;
             this.label3.Location = new System.Drawing.Point(13, 58);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(65, 14);
+            this.label3.Size = new System.Drawing.Size(83, 14);
             this.label3.TabIndex = 18;
-            this.label3.Text = "Customer ID";
+            this.label3.Text = "Customer Name";
             // 
             // label2
             // 
@@ -111,9 +113,9 @@
             this.label4.ForeColor = System.Drawing.Color.White;
             this.label4.Location = new System.Drawing.Point(13, 135);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(117, 14);
+            this.label4.Size = new System.Drawing.Size(100, 14);
             this.label4.TabIndex = 24;
-            this.label4.Text = "Product and Service ID";
+            this.label4.Text = "Product or Service ";
             // 
             // dateTimePicker1
             // 
@@ -139,11 +141,11 @@
             this.userView.AutoSize = true;
             this.userView.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.userView.ForeColor = System.Drawing.Color.White;
-            this.userView.Location = new System.Drawing.Point(255, 78);
+            this.userView.Location = new System.Drawing.Point(279, 78);
             this.userView.Name = "userView";
-            this.userView.Size = new System.Drawing.Size(99, 14);
+            this.userView.Size = new System.Drawing.Size(67, 14);
             this.userView.TabIndex = 27;
-            this.userView.Text = "Nothing is Selected";
+            this.userView.Text = "No Selection";
             this.userView.Click += new System.EventHandler(this.userView_Click);
             // 
             // idNum
@@ -161,11 +163,35 @@
             this.productView.AutoSize = true;
             this.productView.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.productView.ForeColor = System.Drawing.Color.White;
-            this.productView.Location = new System.Drawing.Point(254, 155);
+            this.productView.Location = new System.Drawing.Point(279, 155);
             this.productView.Name = "productView";
-            this.productView.Size = new System.Drawing.Size(99, 14);
+            this.productView.Size = new System.Drawing.Size(67, 14);
             this.productView.TabIndex = 29;
-            this.productView.Text = "Nothing is Selected";
+            this.productView.Text = "No Selection";
+            // 
+            // label1
+            // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(254, 78);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(19, 14);
+            this.label1.TabIndex = 30;
+            this.label1.Text = "ID:";
+            // 
+            // label6
+            // 
+            this.label6.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.White;
+            this.label6.Location = new System.Drawing.Point(254, 155);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(19, 14);
+            this.label6.TabIndex = 31;
+            this.label6.Text = "ID:";
             // 
             // salerOrder
             // 
@@ -173,6 +199,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Crimson;
             this.ClientSize = new System.Drawing.Size(370, 270);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.productView);
             this.Controls.Add(this.idNum);
             this.Controls.Add(this.userView);
@@ -205,5 +233,7 @@
         private System.Windows.Forms.Label userView;
         private System.Windows.Forms.ComboBox idNum;
         private System.Windows.Forms.Label productView;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label6;
     }
 }

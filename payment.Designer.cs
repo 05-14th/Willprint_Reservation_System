@@ -38,6 +38,7 @@
             this.paymentDate = new System.Windows.Forms.DateTimePicker();
             this.customerID = new System.Windows.Forms.ComboBox();
             this.userView = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // button2
@@ -108,9 +109,9 @@
             this.label4.ForeColor = System.Drawing.Color.White;
             this.label4.Location = new System.Drawing.Point(15, 124);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(65, 14);
+            this.label4.Size = new System.Drawing.Size(83, 14);
             this.label4.TabIndex = 17;
-            this.label4.Text = "Customer ID";
+            this.label4.Text = "Customer Name";
             // 
             // label5
             // 
@@ -147,12 +148,24 @@
             this.userView.AutoSize = true;
             this.userView.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.userView.ForeColor = System.Drawing.Color.White;
-            this.userView.Location = new System.Drawing.Point(257, 144);
+            this.userView.Location = new System.Drawing.Point(289, 144);
             this.userView.Name = "userView";
-            this.userView.Size = new System.Drawing.Size(99, 14);
+            this.userView.Size = new System.Drawing.Size(67, 14);
             this.userView.TabIndex = 20;
-            this.userView.Text = "Nothing is Selected";
+            this.userView.Text = "No Selection";
             this.userView.Click += new System.EventHandler(this.userView_Click);
+            // 
+            // label1
+            // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(257, 144);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(19, 14);
+            this.label1.TabIndex = 21;
+            this.label1.Text = "ID:";
             // 
             // payment
             // 
@@ -160,6 +173,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Crimson;
             this.ClientSize = new System.Drawing.Size(368, 255);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.userView);
             this.Controls.Add(this.customerID);
             this.Controls.Add(this.paymentDate);
@@ -190,5 +204,6 @@
         private System.Windows.Forms.DateTimePicker paymentDate;
         private System.Windows.Forms.ComboBox customerID;
         private System.Windows.Forms.Label userView;
+        private System.Windows.Forms.Label label1;
     }
 }

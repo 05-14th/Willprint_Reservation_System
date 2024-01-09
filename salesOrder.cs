@@ -28,8 +28,8 @@ namespace Willprint_Reservation_System
                 {
                     connection.Open();
 
-                    string query = "SELECT customer_id FROM customers";
-                    string productQuery = "SELECT ps_id FROM product_and_services";
+                    string query = "SELECT name FROM customers";
+                    string productQuery = "SELECT pas FROM product_and_services";
                     MySqlCommand command = new MySqlCommand(query, connection);
                     MySqlCommand pcommand = new MySqlCommand(productQuery, connection);
 
@@ -74,7 +74,7 @@ namespace Willprint_Reservation_System
 
                 if (!idExists)
                 {
-                    InsertID(connection, id, soCusID.Text, dateTimePicker1.Value, int.Parse(idNum.Text));
+                    InsertID(connection, id, int.Parse(userView.Text), dateTimePicker1.Value, int.Parse(productView.Text));
                     break;
                 }
             }
@@ -90,7 +90,7 @@ namespace Willprint_Reservation_System
             return count > 0;
         }
 
-        private void InsertID(MySqlConnection connection, string soid, string soCusId, DateTime soDate, int soPsId)
+        private void InsertID(MySqlConnection connection, string soid, int soCusId, DateTime soDate, int soPsId)
         {
             try
             {
@@ -158,7 +158,7 @@ namespace Willprint_Reservation_System
                 {
                     connection.Open();
                     string userSelected = soCusID.Text;
-                    string query = $"SELECT name FROM customers WHERE customer_id = {userSelected}";
+                    string query = $"SELECT customer_id FROM customers WHERE name = '{userSelected}'";
 
                     MySqlCommand command = new MySqlCommand(query, connection);
 
@@ -188,7 +188,7 @@ namespace Willprint_Reservation_System
                 {
                     connection.Open();
                     string userSelected = idNum.Text;
-                    string query = $"SELECT pas FROM product_and_services WHERE ps_id = {userSelected}";
+                    string query = $"SELECT ps_id FROM product_and_services WHERE pas = '{userSelected}'";
 
                     MySqlCommand command = new MySqlCommand(query, connection);
 

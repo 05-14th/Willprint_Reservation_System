@@ -29,7 +29,7 @@ namespace Willprint_Reservation_System
                 {
                     connection.Open();
 
-                    string query = "SELECT customer_id, name FROM customers";
+                    string query = "SELECT name FROM customers";
                     MySqlCommand command = new MySqlCommand(query, connection);
                 
 
@@ -64,7 +64,7 @@ namespace Willprint_Reservation_System
 
                 if (!idExists)
                 {
-                    InsertID(connection, id, long.Parse(paymentAmount.Text), paymentDate.Value, int.Parse(customerID.Text));
+                    InsertID(connection, id, long.Parse(paymentAmount.Text), paymentDate.Value, int.Parse(userView.Text));
                     break;
                 }
             }
@@ -153,7 +153,7 @@ namespace Willprint_Reservation_System
                 {
                     connection.Open();
                     string userSelected = customerID.Text;
-                    string query = $"SELECT name FROM customers WHERE customer_id = {userSelected}";
+                    string query = $"SELECT customer_id FROM customers WHERE name = '{userSelected}'";
 
                     MySqlCommand command = new MySqlCommand(query, connection);
 
