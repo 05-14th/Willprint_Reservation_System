@@ -19,6 +19,7 @@ namespace Willprint_Reservation_System
         private string database;
         private string uid;
         private string password;
+        public int loginUser = 104;
         public Login()
         {
             InitializeComponent();
