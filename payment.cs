@@ -55,7 +55,7 @@ namespace Willprint_Reservation_System
 
         private void InsertMissingIDs(MySqlConnection connection)
         {
-            for (int i = 1; i <= 1000000; i++)
+            for (long i = 1; i <= 1000000; i++)
             {
                 string id = "p" + i;
 
@@ -63,7 +63,7 @@ namespace Willprint_Reservation_System
 
                 if (!idExists)
                 {
-                    InsertID(connection, id, long.Parse(paymentAmount.Text), paymentDate.Value, int.Parse(userView.Text));
+                    InsertID(connection, id, long.Parse(paymentAmount.Text), paymentDate.Value, long.Parse(userView.Text));
                     break;
                 }
             }
@@ -79,7 +79,7 @@ namespace Willprint_Reservation_System
             return count > 0;
         }
 
-        private void InsertID(MySqlConnection connection, string paymentID, long amount, DateTime paymentDate, int cusId)
+        private void InsertID(MySqlConnection connection, string paymentID, long amount, DateTime paymentDate, long cusId)
         {
             try
             {

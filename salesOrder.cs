@@ -108,7 +108,6 @@ namespace Willprint_Reservation_System
 
                     if (result > 0)
                     {
-                       
                         this.Close();
                     }
                     else

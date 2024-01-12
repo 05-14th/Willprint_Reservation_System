@@ -31,10 +31,10 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.quantity = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.salesOrderID = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // button2
@@ -76,13 +76,14 @@
             this.label3.Text = "Quantity";
             this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
-            // textBox2
+            // quantity
             // 
-            this.textBox2.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.textBox2.Location = new System.Drawing.Point(30, 118);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(338, 20);
-            this.textBox2.TabIndex = 21;
+            this.quantity.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.quantity.Location = new System.Drawing.Point(30, 118);
+            this.quantity.MaxLength = 11;
+            this.quantity.Name = "quantity";
+            this.quantity.Size = new System.Drawing.Size(338, 20);
+            this.quantity.TabIndex = 21;
             // 
             // label2
             // 
@@ -104,17 +105,17 @@
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(27, 63);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(34, 14);
+            this.label1.Size = new System.Drawing.Size(77, 14);
             this.label1.TabIndex = 19;
-            this.label1.Text = "Sales";
+            this.label1.Text = "Sales Order ID";
             // 
-            // textBox1
+            // salesOrderID
             // 
-            this.textBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.textBox1.Location = new System.Drawing.Point(30, 79);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(338, 20);
-            this.textBox1.TabIndex = 18;
+            this.salesOrderID.FormattingEnabled = true;
+            this.salesOrderID.Location = new System.Drawing.Point(30, 80);
+            this.salesOrderID.Name = "salesOrderID";
+            this.salesOrderID.Size = new System.Drawing.Size(338, 21);
+            this.salesOrderID.TabIndex = 25;
             // 
             // salesLineItem
             // 
@@ -122,13 +123,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Crimson;
             this.ClientSize = new System.Drawing.Size(400, 239);
+            this.Controls.Add(this.salesOrderID);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.quantity);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "salesLineItem";
             this.Text = "Add Sales Line Item";
@@ -141,9 +142,9 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox quantity;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.ComboBox salesOrderID;
     }
 }

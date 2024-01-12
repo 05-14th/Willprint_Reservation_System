@@ -91,6 +91,7 @@ namespace Willprint_Reservation_System
                             this.Close();
                         }
                     }
+                    connection.Close();
                 }
                 catch (Exception ex)
                 {
