@@ -1,36 +1,36 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Data;
-using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient;
 
 namespace Willprint_Reservation_System
 {
     public partial class main : Form
     {
-        private const string connectionString = "server=localhost;database=willprint;user=root;password=";
-        private int state = 1;
+        public static string connectionString = "server=localhost;database=willprint;user=root;password=";
+        public static int state = 1;
+       
         public main()
         {
             InitializeComponent();
-            InitializeUI();
             LoadDataIntoDataGridView();
+            InitializeUI();
         }
 
         private void InitializeUI()
         {
-            panel2.Visible = false;
+           
+            search.Dock = DockStyle.Top;
+            insert.Dock = DockStyle.Top;
+            update.Dock = DockStyle.Top;
+            delete.Dock = DockStyle.Top;
+            generate.Dock = DockStyle.Top;
+            logout.Dock = DockStyle.Top;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            panel2.Visible = !panel2.Visible;
+           
         }
 
         private void Form2_Load(object sender, EventArgs e)
@@ -42,42 +42,42 @@ namespace Willprint_Reservation_System
         {
             state = 6;
             LoadDataIntoDataGridView();
-            panel2.Visible = false;
+             
         }
 
         private void button8_Click(object sender, EventArgs e)
         {
             state = 2;
             LoadDataIntoDataGridView();
-            panel2.Visible = false;
+             
         }
 
         private void button9_Click(object sender, EventArgs e)
         {
             state = 3;
             LoadDataIntoDataGridView();
-            panel2.Visible = false;
+             
         }
 
         private void button10_Click(object sender, EventArgs e)
         {
             state = 4;
             LoadDataIntoDataGridView();
-            panel2.Visible = false;
+             
         }
 
         private void button11_Click(object sender, EventArgs e)
         {
             state = 5;
             LoadDataIntoDataGridView();
-            panel2.Visible = false;
+             
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
             state = 1;
             LoadDataIntoDataGridView();
-            panel2.Visible = false;
+             
         }
 
         private void button14_Click(object sender, EventArgs e)
@@ -141,6 +141,7 @@ namespace Willprint_Reservation_System
                     // Bind the data to the DataGridView
                     dataGridView1.DataSource = null; 
                     dataGridView1.DataSource = dataTable;
+                    connection.Close();
                 }
                 catch (Exception ex)
                 {
@@ -171,6 +172,7 @@ namespace Willprint_Reservation_System
                         ((DataTable)dataGridView1.DataSource).AcceptChanges();
                         MessageBox.Show("Changes saved to the database.");
                     }
+                    connection.Close();
                 }
                 catch (Exception ex)
                 {
@@ -184,21 +186,21 @@ namespace Willprint_Reservation_System
         {
             state = 7;
             LoadDataIntoDataGridView();
-            panel2.Visible = false;
+             
         }
 
         private void button14_Click_1(object sender, EventArgs e)
         {
             state = 8;
             LoadDataIntoDataGridView();
-            panel2.Visible = false;
+             
         }
 
         private void button15_Click(object sender, EventArgs e)
         {
             state = 9;
             LoadDataIntoDataGridView();
-            panel2.Visible = false;
+             
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -215,55 +217,55 @@ namespace Willprint_Reservation_System
                         {
                             customers form3 = new customers();
                             form3.ShowDialog();
-                            panel2.Visible = false;
+                             
                         }
                         else if (state == 2)
                         {
                             employee form4 = new employee();
                             form4.ShowDialog();
-                            panel2.Visible = false;
+                             
                         }
                         else if (state == 3)
                         {
                             salerOrder form5 = new salerOrder();
                             form5.ShowDialog();
-                            panel2.Visible = false;
+                             
                         }
                         else if (state == 4)
                         {
                             payment form6 = new payment();
                             form6.ShowDialog();
-                            panel2.Visible = false;
+                             
                         }
                         else if (state == 5)
                         {
                             purchase_order form7 = new purchase_order();
                             form7.ShowDialog();
-                            panel2.Visible = false;
+                             
                         }
                         else if (state == 6)
                         {
                             inventory form11 = new inventory();
                             form11.ShowDialog();
-                            panel2.Visible = false;
+                             
                         }
                         else if (state == 7)
                         {
                             orderLineItem form8 = new orderLineItem();
                             form8.ShowDialog();
-                            panel2.Visible = false;
+                             
                         }
                         else if (state == 8)
                         {
                             salesLineItem form9 = new salesLineItem();
                             form9.ShowDialog();
-                            panel2.Visible = false;
+                             
                         }
                         else if (state == 9)
                         {
                             products form10 = new products();
                             form10.ShowDialog();
-                            panel2.Visible = false;
+                             
                         }
 
                     }
@@ -401,8 +403,7 @@ namespace Willprint_Reservation_System
 
         private void button16_Click(object sender, EventArgs e)
         {
-            search searchUi = new search();
-            searchUi.ShowDialog();
+           
         }
 
         private void button17_Click(object sender, EventArgs e)
@@ -410,6 +411,89 @@ namespace Willprint_Reservation_System
             this.Close();
             Login loginUi = new Login();
             loginUi.Show();
+        }
+
+        private void search_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                string keyword = searchbar.Text;
+                try
+                {
+                    connection.Open();
+
+                    string query = null;
+
+                    if (state == 1)
+                    {
+                        query = $"SELECT * FROM customers WHERE name LIKE @keyword";
+                    }
+                    else if (state == 2)
+                    {
+                        query = $"SELECT * FROM employee WHERE name LIKE @keyword";
+                    }
+                    else if (state == 3)
+                    {
+                        query = $"SELECT * FROM sales_order WHERE customer_id LIKE @keyword";
+                    }
+                    else if (state == 4)
+                    {
+                        query = $"SELECT * FROM payment WHERE customer_id LIKE @keyword OR amount LIKE @keyword";
+                    }
+                    else if (state == 5)
+                    {
+                        query = $"SELECT * FROM purchase_order WHERE employee_id LIKE @keyword";
+                    }
+                    else if (state == 6)
+                    {
+                        query = $"SELECT * FROM inventory WHERE name LIKE @keyword";
+                    }
+                    else if (state == 7)
+                    {
+                        query = $"SELECT * FROM order_line_item WHERE product_id LIKE @keyword OR purchase_order_id LIKE @keyword";
+                    }
+                    else if (state == 8)
+                    {
+                        query = $"SELECT * FROM sales_line_item WHERE sales_order_id LIKE @keyword OR quantity LIKE @keyword";
+                    }
+                    else if (state == 9)
+                    {
+                        query = $"SELECT * FROM product_and_services WHERE pas LIKE @keyword OR price LIKE @keyword";
+                    }
+
+                    if (!string.IsNullOrEmpty(query))
+                    {
+                        MySqlCommand cmd = new MySqlCommand(query, connection);
+                        cmd.Parameters.AddWithValue("@keyword", $"%{keyword}%");
+
+                        MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
+                        DataTable dataTable = new DataTable();
+                        adapter.Fill(dataTable);
+
+                        // Bind the data to the DataGridView
+                        dataGridView1.DataSource = null;
+                        dataGridView1.DataSource = dataTable;
+                    }
+
+                    searchbar.Text = "";
+                    connection.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message);
+                }
+            }
+
         }
     }
 }

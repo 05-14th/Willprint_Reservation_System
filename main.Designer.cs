@@ -29,137 +29,107 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button17 = new System.Windows.Forms.Button();
-            this.button16 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.search = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
+            this.searchbar = new System.Windows.Forms.TextBox();
+            this.insert = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.button7 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.button15 = new System.Windows.Forms.Button();
             this.button14 = new System.Windows.Forms.Button();
             this.button13 = new System.Windows.Forms.Button();
             this.button12 = new System.Windows.Forms.Button();
             this.button11 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.update = new System.Windows.Forms.Button();
+            this.delete = new System.Windows.Forms.Button();
+            this.generate = new System.Windows.Forms.Button();
+            this.logout = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
+            this.search.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel2.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Crimson;
-            this.panel1.Controls.Add(this.button17);
-            this.panel1.Controls.Add(this.button16);
-            this.panel1.Controls.Add(this.button6);
-            this.panel1.Controls.Add(this.button5);
-            this.panel1.Controls.Add(this.button2);
-            this.panel1.Controls.Add(this.button1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Controls.Add(this.panel3);
+            this.panel1.Controls.Add(this.search);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(800, 47);
+            this.panel1.Size = new System.Drawing.Size(187, 652);
             this.panel1.TabIndex = 0;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
-            // button17
+            // search
             // 
-            this.button17.BackColor = System.Drawing.Color.White;
-            this.button17.Dock = System.Windows.Forms.DockStyle.Left;
-            this.button17.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button17.Location = new System.Drawing.Point(575, 0);
-            this.button17.Name = "button17";
-            this.button17.Size = new System.Drawing.Size(115, 47);
-            this.button17.TabIndex = 6;
-            this.button17.Text = "Logout";
-            this.button17.UseVisualStyleBackColor = false;
-            this.button17.Click += new System.EventHandler(this.button17_Click);
-            // 
-            // button16
-            // 
-            this.button16.BackColor = System.Drawing.Color.White;
-            this.button16.Dock = System.Windows.Forms.DockStyle.Left;
-            this.button16.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button16.Location = new System.Drawing.Point(460, 0);
-            this.button16.Name = "button16";
-            this.button16.Size = new System.Drawing.Size(115, 47);
-            this.button16.TabIndex = 5;
-            this.button16.Text = "Search";
-            this.button16.UseVisualStyleBackColor = false;
-            this.button16.Click += new System.EventHandler(this.button16_Click);
-            // 
-            // button6
-            // 
-            this.button6.BackColor = System.Drawing.Color.White;
-            this.button6.Dock = System.Windows.Forms.DockStyle.Left;
-            this.button6.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.Location = new System.Drawing.Point(345, 0);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(115, 47);
-            this.button6.TabIndex = 4;
-            this.button6.Text = "Save Changes";
-            this.button6.UseVisualStyleBackColor = false;
-            // 
-            // button5
-            // 
-            this.button5.BackColor = System.Drawing.Color.White;
-            this.button5.Dock = System.Windows.Forms.DockStyle.Left;
-            this.button5.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Location = new System.Drawing.Point(230, 0);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(115, 47);
-            this.button5.TabIndex = 3;
-            this.button5.Text = "Delete Data";
-            this.button5.UseVisualStyleBackColor = false;
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.White;
-            this.button2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.button2.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(115, 0);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(115, 47);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Insert Data";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click_1);
+            this.search.Controls.Add(this.button1);
+            this.search.Controls.Add(this.searchbar);
+            this.search.Dock = System.Windows.Forms.DockStyle.Top;
+            this.search.Location = new System.Drawing.Point(0, 0);
+            this.search.Name = "search";
+            this.search.Size = new System.Drawing.Size(187, 44);
+            this.search.TabIndex = 3;
+            this.search.Paint += new System.Windows.Forms.PaintEventHandler(this.search_Paint);
             // 
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.White;
             this.button1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.button1.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(0, 0);
+            this.button1.Location = new System.Drawing.Point(0, 20);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(115, 47);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Tables";
+            this.button1.Size = new System.Drawing.Size(75, 24);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "Search";
             this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
+            // searchbar
+            // 
+            this.searchbar.Dock = System.Windows.Forms.DockStyle.Top;
+            this.searchbar.Location = new System.Drawing.Point(0, 0);
+            this.searchbar.Name = "searchbar";
+            this.searchbar.Size = new System.Drawing.Size(187, 20);
+            this.searchbar.TabIndex = 3;
+            // 
+            // insert
+            // 
+            this.insert.BackColor = System.Drawing.Color.White;
+            this.insert.Dock = System.Windows.Forms.DockStyle.Top;
+            this.insert.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.insert.Location = new System.Drawing.Point(0, 0);
+            this.insert.Name = "insert";
+            this.insert.Size = new System.Drawing.Size(187, 54);
+            this.insert.TabIndex = 1;
+            this.insert.Text = "Insert Data";
+            this.insert.UseVisualStyleBackColor = false;
+            this.insert.Click += new System.EventHandler(this.button2_Click_1);
             // 
             // dataGridView1
             // 
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 47);
+            this.dataGridView1.Location = new System.Drawing.Point(187, 0);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(800, 605);
+            this.dataGridView1.Size = new System.Drawing.Size(863, 652);
             this.dataGridView1.TabIndex = 1;
             // 
             // button7
             // 
             this.button7.BackColor = System.Drawing.Color.White;
-            this.button7.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button7.Dock = System.Windows.Forms.DockStyle.Left;
             this.button7.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button7.Location = new System.Drawing.Point(0, 0);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(800, 47);
+            this.button7.Size = new System.Drawing.Size(130, 49);
             this.button7.TabIndex = 6;
             this.button7.Text = "Customer";
             this.button7.UseVisualStyleBackColor = false;
@@ -168,11 +138,11 @@
             // button8
             // 
             this.button8.BackColor = System.Drawing.Color.White;
-            this.button8.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button8.Dock = System.Windows.Forms.DockStyle.Left;
             this.button8.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button8.Location = new System.Drawing.Point(0, 47);
+            this.button8.Location = new System.Drawing.Point(130, 0);
             this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(800, 45);
+            this.button8.Size = new System.Drawing.Size(130, 49);
             this.button8.TabIndex = 7;
             this.button8.Text = "Employee";
             this.button8.UseVisualStyleBackColor = false;
@@ -181,15 +151,93 @@
             // button9
             // 
             this.button9.BackColor = System.Drawing.Color.White;
-            this.button9.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button9.Dock = System.Windows.Forms.DockStyle.Left;
             this.button9.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button9.Location = new System.Drawing.Point(0, 92);
+            this.button9.Location = new System.Drawing.Point(260, 0);
             this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(800, 45);
+            this.button9.Size = new System.Drawing.Size(130, 49);
             this.button9.TabIndex = 8;
             this.button9.Text = "Sales Order";
             this.button9.UseVisualStyleBackColor = false;
             this.button9.Click += new System.EventHandler(this.button9_Click);
+            // 
+            // button15
+            // 
+            this.button15.BackColor = System.Drawing.Color.White;
+            this.button15.Dock = System.Windows.Forms.DockStyle.Left;
+            this.button15.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button15.Location = new System.Drawing.Point(1040, 0);
+            this.button15.Name = "button15";
+            this.button15.Size = new System.Drawing.Size(130, 49);
+            this.button15.TabIndex = 14;
+            this.button15.Text = "Product and Services";
+            this.button15.UseVisualStyleBackColor = false;
+            this.button15.Click += new System.EventHandler(this.button15_Click);
+            // 
+            // button14
+            // 
+            this.button14.BackColor = System.Drawing.Color.White;
+            this.button14.Dock = System.Windows.Forms.DockStyle.Left;
+            this.button14.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button14.Location = new System.Drawing.Point(910, 0);
+            this.button14.Name = "button14";
+            this.button14.Size = new System.Drawing.Size(130, 49);
+            this.button14.TabIndex = 13;
+            this.button14.Text = "Sales Line Item";
+            this.button14.UseVisualStyleBackColor = false;
+            this.button14.Click += new System.EventHandler(this.button14_Click_1);
+            // 
+            // button13
+            // 
+            this.button13.BackColor = System.Drawing.Color.White;
+            this.button13.Dock = System.Windows.Forms.DockStyle.Left;
+            this.button13.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button13.Location = new System.Drawing.Point(780, 0);
+            this.button13.Name = "button13";
+            this.button13.Size = new System.Drawing.Size(130, 49);
+            this.button13.TabIndex = 12;
+            this.button13.Text = "Order Line Item";
+            this.button13.UseVisualStyleBackColor = false;
+            this.button13.Click += new System.EventHandler(this.button13_Click);
+            // 
+            // button12
+            // 
+            this.button12.BackColor = System.Drawing.Color.White;
+            this.button12.Dock = System.Windows.Forms.DockStyle.Left;
+            this.button12.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button12.Location = new System.Drawing.Point(650, 0);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(130, 49);
+            this.button12.TabIndex = 11;
+            this.button12.Text = "Inventory";
+            this.button12.UseVisualStyleBackColor = false;
+            this.button12.Click += new System.EventHandler(this.button12_Click);
+            // 
+            // button11
+            // 
+            this.button11.BackColor = System.Drawing.Color.White;
+            this.button11.Dock = System.Windows.Forms.DockStyle.Left;
+            this.button11.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button11.Location = new System.Drawing.Point(520, 0);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(130, 49);
+            this.button11.TabIndex = 10;
+            this.button11.Text = "Purchase Order";
+            this.button11.UseVisualStyleBackColor = false;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
+            // 
+            // button10
+            // 
+            this.button10.BackColor = System.Drawing.Color.White;
+            this.button10.Dock = System.Windows.Forms.DockStyle.Left;
+            this.button10.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button10.Location = new System.Drawing.Point(390, 0);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(130, 49);
+            this.button10.TabIndex = 9;
+            this.button10.Text = "Payment";
+            this.button10.UseVisualStyleBackColor = false;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
             // panel2
             // 
@@ -204,94 +252,77 @@
             this.panel2.Controls.Add(this.button8);
             this.panel2.Controls.Add(this.button7);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 180);
+            this.panel2.Location = new System.Drawing.Point(187, 603);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(800, 472);
+            this.panel2.Size = new System.Drawing.Size(863, 49);
             this.panel2.TabIndex = 2;
             // 
-            // button15
+            // panel3
             // 
-            this.button15.BackColor = System.Drawing.Color.White;
-            this.button15.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button15.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button15.Location = new System.Drawing.Point(0, 362);
-            this.button15.Name = "button15";
-            this.button15.Size = new System.Drawing.Size(800, 45);
-            this.button15.TabIndex = 14;
-            this.button15.Text = "Product and Services";
-            this.button15.UseVisualStyleBackColor = false;
-            this.button15.Click += new System.EventHandler(this.button15_Click);
+            this.panel3.Controls.Add(this.logout);
+            this.panel3.Controls.Add(this.generate);
+            this.panel3.Controls.Add(this.delete);
+            this.panel3.Controls.Add(this.update);
+            this.panel3.Controls.Add(this.insert);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel3.Location = new System.Drawing.Point(0, 44);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(187, 273);
+            this.panel3.TabIndex = 7;
             // 
-            // button14
+            // update
             // 
-            this.button14.BackColor = System.Drawing.Color.White;
-            this.button14.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button14.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button14.Location = new System.Drawing.Point(0, 317);
-            this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(800, 45);
-            this.button14.TabIndex = 13;
-            this.button14.Text = "Sales Line Item";
-            this.button14.UseVisualStyleBackColor = false;
-            this.button14.Click += new System.EventHandler(this.button14_Click_1);
+            this.update.BackColor = System.Drawing.Color.White;
+            this.update.Dock = System.Windows.Forms.DockStyle.Top;
+            this.update.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.update.Location = new System.Drawing.Point(0, 54);
+            this.update.Name = "update";
+            this.update.Size = new System.Drawing.Size(187, 54);
+            this.update.TabIndex = 9;
+            this.update.Text = "Save Changes";
+            this.update.UseVisualStyleBackColor = false;
             // 
-            // button13
+            // delete
             // 
-            this.button13.BackColor = System.Drawing.Color.White;
-            this.button13.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button13.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button13.Location = new System.Drawing.Point(0, 272);
-            this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(800, 45);
-            this.button13.TabIndex = 12;
-            this.button13.Text = "Order Line Item";
-            this.button13.UseVisualStyleBackColor = false;
-            this.button13.Click += new System.EventHandler(this.button13_Click);
+            this.delete.BackColor = System.Drawing.Color.White;
+            this.delete.Dock = System.Windows.Forms.DockStyle.Top;
+            this.delete.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.delete.Location = new System.Drawing.Point(0, 108);
+            this.delete.Name = "delete";
+            this.delete.Size = new System.Drawing.Size(187, 54);
+            this.delete.TabIndex = 10;
+            this.delete.Text = "Delete Data";
+            this.delete.UseVisualStyleBackColor = false;
             // 
-            // button12
+            // generate
             // 
-            this.button12.BackColor = System.Drawing.Color.White;
-            this.button12.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button12.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button12.Location = new System.Drawing.Point(0, 227);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(800, 45);
-            this.button12.TabIndex = 11;
-            this.button12.Text = "Inventory";
-            this.button12.UseVisualStyleBackColor = false;
-            this.button12.Click += new System.EventHandler(this.button12_Click);
+            this.generate.BackColor = System.Drawing.Color.White;
+            this.generate.Dock = System.Windows.Forms.DockStyle.Top;
+            this.generate.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.generate.Location = new System.Drawing.Point(0, 162);
+            this.generate.Name = "generate";
+            this.generate.Size = new System.Drawing.Size(187, 54);
+            this.generate.TabIndex = 11;
+            this.generate.Text = "Generate Report";
+            this.generate.UseVisualStyleBackColor = false;
             // 
-            // button11
+            // logout
             // 
-            this.button11.BackColor = System.Drawing.Color.White;
-            this.button11.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button11.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button11.Location = new System.Drawing.Point(0, 182);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(800, 45);
-            this.button11.TabIndex = 10;
-            this.button11.Text = "Purchase Order";
-            this.button11.UseVisualStyleBackColor = false;
-            this.button11.Click += new System.EventHandler(this.button11_Click);
-            // 
-            // button10
-            // 
-            this.button10.BackColor = System.Drawing.Color.White;
-            this.button10.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button10.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button10.Location = new System.Drawing.Point(0, 137);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(800, 45);
-            this.button10.TabIndex = 9;
-            this.button10.Text = "Payment";
-            this.button10.UseVisualStyleBackColor = false;
-            this.button10.Click += new System.EventHandler(this.button10_Click);
+            this.logout.BackColor = System.Drawing.Color.White;
+            this.logout.Dock = System.Windows.Forms.DockStyle.Top;
+            this.logout.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.logout.Location = new System.Drawing.Point(0, 216);
+            this.logout.Name = "logout";
+            this.logout.Size = new System.Drawing.Size(187, 54);
+            this.logout.TabIndex = 12;
+            this.logout.Text = "Logout";
+            this.logout.UseVisualStyleBackColor = false;
             // 
             // main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 652);
+            this.ClientSize = new System.Drawing.Size(1050, 652);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.panel1);
@@ -299,8 +330,11 @@
             this.Text = "Willprint Recording System";
             this.Load += new System.EventHandler(this.Form2_Load);
             this.panel1.ResumeLayout(false);
+            this.search.ResumeLayout(false);
+            this.search.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel2.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -308,22 +342,25 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button button11;
         private System.Windows.Forms.Button button10;
         private System.Windows.Forms.Button button12;
         private System.Windows.Forms.Button button13;
         private System.Windows.Forms.Button button15;
         private System.Windows.Forms.Button button14;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button17;
-        private System.Windows.Forms.Button button16;
+        private System.Windows.Forms.Button insert;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.TextBox searchbar;
+        private System.Windows.Forms.Panel search;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Button logout;
+        private System.Windows.Forms.Button generate;
+        private System.Windows.Forms.Button delete;
+        private System.Windows.Forms.Button update;
     }
 }
