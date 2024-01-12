@@ -31,18 +31,22 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.prodQuantity = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.price = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.purchaseOrder = new System.Windows.Forms.ComboBox();
             this.button3 = new System.Windows.Forms.Button();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.productName = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
+            this.prodID = new System.Windows.Forms.Label();
+            this.product = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.budget = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.poid = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -90,15 +94,16 @@
             this.label3.Text = "Quantity";
             this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
-            // textBox2
+            // prodQuantity
             // 
-            this.textBox2.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.textBox2.Location = new System.Drawing.Point(10, 108);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(337, 20);
-            this.textBox2.TabIndex = 10;
-            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            this.prodQuantity.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.prodQuantity.Location = new System.Drawing.Point(10, 108);
+            this.prodQuantity.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.prodQuantity.MaxLength = 11;
+            this.prodQuantity.Name = "prodQuantity";
+            this.prodQuantity.Size = new System.Drawing.Size(337, 20);
+            this.prodQuantity.TabIndex = 10;
+            this.prodQuantity.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // label2
             // 
@@ -150,37 +155,44 @@
             this.label5.Location = new System.Drawing.Point(7, 130);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(35, 14);
+            this.label5.Size = new System.Drawing.Size(46, 14);
             this.label5.TabIndex = 15;
-            this.label5.Text = "Price";
+            this.label5.Text = "Budget";
             this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
-            // textBox4
+            // price
             // 
-            this.textBox4.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.textBox4.Location = new System.Drawing.Point(10, 147);
-            this.textBox4.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(337, 20);
-            this.textBox4.TabIndex = 14;
-            this.textBox4.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
+            this.price.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.price.Location = new System.Drawing.Point(10, 147);
+            this.price.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.price.MaxLength = 11;
+            this.price.Name = "price";
+            this.price.Size = new System.Drawing.Size(337, 20);
+            this.price.TabIndex = 14;
+            this.price.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
             // 
             // dataGridView1
             // 
             this.dataGridView1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.product,
+            this.quantity,
+            this.budget,
+            this.poid});
             this.dataGridView1.Location = new System.Drawing.Point(354, 54);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(371, 268);
             this.dataGridView1.TabIndex = 18;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
-            // comboBox1
+            // purchaseOrder
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(10, 184);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(337, 22);
-            this.comboBox1.TabIndex = 19;
+            this.purchaseOrder.FormattingEnabled = true;
+            this.purchaseOrder.Location = new System.Drawing.Point(10, 184);
+            this.purchaseOrder.Name = "purchaseOrder";
+            this.purchaseOrder.Size = new System.Drawing.Size(337, 22);
+            this.purchaseOrder.TabIndex = 19;
             // 
             // button3
             // 
@@ -197,13 +209,14 @@
             this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
-            // comboBox2
+            // productName
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(10, 66);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(224, 22);
-            this.comboBox2.TabIndex = 21;
+            this.productName.FormattingEnabled = true;
+            this.productName.Location = new System.Drawing.Point(10, 66);
+            this.productName.Name = "productName";
+            this.productName.Size = new System.Drawing.Size(224, 22);
+            this.productName.TabIndex = 21;
+            this.productName.SelectedIndexChanged += new System.EventHandler(this.productName_SelectedIndexChanged);
             // 
             // label6
             // 
@@ -218,18 +231,42 @@
             this.label6.TabIndex = 22;
             this.label6.Text = "ID: ";
             // 
-            // label7
+            // prodID
             // 
-            this.label7.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(272, 69);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(75, 14);
-            this.label7.TabIndex = 23;
-            this.label7.Text = "No Selection";
+            this.prodID.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.prodID.AutoSize = true;
+            this.prodID.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.prodID.ForeColor = System.Drawing.Color.White;
+            this.prodID.Location = new System.Drawing.Point(272, 69);
+            this.prodID.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.prodID.Name = "prodID";
+            this.prodID.Size = new System.Drawing.Size(75, 14);
+            this.prodID.TabIndex = 23;
+            this.prodID.Text = "No Selection";
+            // 
+            // product
+            // 
+            this.product.HeaderText = "Product ID";
+            this.product.Name = "product";
+            this.product.ReadOnly = true;
+            // 
+            // quantity
+            // 
+            this.quantity.HeaderText = "Quantity";
+            this.quantity.Name = "quantity";
+            this.quantity.ReadOnly = true;
+            // 
+            // budget
+            // 
+            this.budget.HeaderText = "Budget";
+            this.budget.Name = "budget";
+            this.budget.ReadOnly = true;
+            // 
+            // poid
+            // 
+            this.poid.HeaderText = "PO ID";
+            this.poid.Name = "poid";
+            this.poid.ReadOnly = true;
             // 
             // orderLineItem
             // 
@@ -237,19 +274,19 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Crimson;
             this.ClientSize = new System.Drawing.Size(737, 338);
-            this.Controls.Add(this.label7);
+            this.Controls.Add(this.prodID);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.comboBox2);
+            this.Controls.Add(this.productName);
             this.Controls.Add(this.button3);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.purchaseOrder);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.price);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.prodQuantity);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -270,17 +307,21 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox prodQuantity;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox price;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox purchaseOrder;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox productName;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label prodID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn product;
+        private System.Windows.Forms.DataGridViewTextBoxColumn quantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn budget;
+        private System.Windows.Forms.DataGridViewTextBoxColumn poid;
     }
 }

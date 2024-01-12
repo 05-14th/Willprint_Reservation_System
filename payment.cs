@@ -53,7 +53,6 @@ namespace Willprint_Reservation_System
             }
         }
 
-
         private void InsertMissingIDs(MySqlConnection connection)
         {
             for (int i = 1; i <= 1000000; i++)

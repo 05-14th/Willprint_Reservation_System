@@ -66,7 +66,7 @@ namespace Willprint_Reservation_System
 
         private void InsertMissingIDs(MySqlConnection connection)
         {
-            for (int i = 1; i <= 1000000; i++) 
+            for (long i = 1; i <= 1000000; i++) 
             {
                 string id = "a" + i;
 
@@ -74,7 +74,7 @@ namespace Willprint_Reservation_System
 
                 if (!idExists)
                 {
-                    InsertID(connection, id, int.Parse(userView.Text), dateTimePicker1.Value, int.Parse(productView.Text));
+                    InsertID(connection, id, long.Parse(userView.Text), dateTimePicker1.Value, long.Parse(productView.Text));
                     break;
                 }
             }
@@ -86,11 +86,11 @@ namespace Willprint_Reservation_System
             MySqlCommand command = new MySqlCommand(query, connection);
             command.Parameters.AddWithValue("@id", id);
 
-            int count = Convert.ToInt32(command.ExecuteScalar());
+            long count = Convert.ToInt32(command.ExecuteScalar());
             return count > 0;
         }
 
-        private void InsertID(MySqlConnection connection, string soid, int soCusId, DateTime soDate, int soPsId)
+        private void InsertID(MySqlConnection connection, string soid, long soCusId, DateTime soDate, long soPsId)
         {
             try
             {
