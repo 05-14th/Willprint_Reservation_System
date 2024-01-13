@@ -436,15 +436,50 @@ namespace Willprint_Reservation_System
 
                     if (state == 1)
                     {
-                        query = $"SELECT * FROM customers WHERE name LIKE @keyword";
+                        if (dynaSearch.Checked)
+                        {
+                            string searchQuery = "SELECT customer_id FROM customers WHERE name LIKE @keyword";
+                            using (MySqlCommand cmd = new MySqlCommand(searchQuery, connection))
+                            {
+                                cmd.Parameters.AddWithValue("@keyword", "%" + keyword + "%");
+                                using (MySqlDataReader reader = cmd.ExecuteReader())
+                                {
+                                    while (reader.Read())
+                                    {
+                                        int id = reader.GetInt32("customer_id");
+                                        query = $"SELECT * FROM customers LEFT JOIN sales_order ON customers.customer_id = sales_order.customer_id " +
+                                            $"LEFT JOIN payment ON customers.customer_id = payment.customer_id WHERE customers.name LIKE @keyword OR customers.customer_id = '{id}'";
+                                    }
+                                }
+                            } 
+                        }
+                        else
+                        {
+                            query = $"SELECT * FROM customers WHERE name LIKE @keyword";
+                        }
                     }
                     else if (state == 2)
                     {
-                        query = $"SELECT * FROM employee WHERE name LIKE @keyword";
+                        if (dynaSearch.Checked)
+                        {
+                            query = $"SELECT * FROM employee LEFT JOIN purchase_order ON employee.employee_id = purchase_order.employee_id WHERE employee.name LIKE @keyword";
+                        }
+                        else
+                        {
+                            query = $"SELECT * FROM employee WHERE name LIKE @keyword";
+                        }
                     }
                     else if (state == 3)
                     {
-                        query = $"SELECT * FROM sales_order WHERE customer_id LIKE @keyword";
+                        if (dynaSearch.Checked)
+                        {
+                            query = $" SELECT * FROM sales_order LEFT JOIN sales_line_item ON sales_order.sales_order_id = sales_line_item.sales_order_id " +
+                                $"LEFT JOIN customers ON customers.customer_id = sales_order.customer_id WHERE customers.customer_id LIKE @keyword OR customers.name LIKE @keyword";
+                        }
+                        else
+                        {
+                            query = "SELECT * FROM sales_order WHERE customer_id LIKE @keyword";
+                        }
                     }
                     else if (state == 4)
                     {
@@ -452,7 +487,13 @@ namespace Willprint_Reservation_System
                     }
                     else if (state == 5)
                     {
-                        query = $"SELECT * FROM purchase_order WHERE employee_id LIKE @keyword";
+                        if (dynaSearch.Checked)
+                        {
+                            query = $"SELECT * FROM purchase_order LEFT JOIN employee ON purchase_order.employee_id = employee.employee_id WHERE employee.name LIKE @keyword OR employee.employee_id LIKE @keyword";
+                        }
+                        else {
+                            query = $"SELECT * FROM purchase_order WHERE employee_id LIKE @keyword";
+                        }
                     }
                     else if (state == 6)
                     {
@@ -464,7 +505,14 @@ namespace Willprint_Reservation_System
                     }
                     else if (state == 8)
                     {
-                        query = $"SELECT * FROM sales_line_item WHERE sales_order_id LIKE @keyword OR quantity LIKE @keyword";
+                        if (dynaSearch.Checked)
+                        {
+                            query = $"SELECT * FROM sales_order LEFT JOIN sales_line_item ON sales_order.sales_order_id = sales_line_item.sales_order_id WHERE sales_line_item.sales_order_id LIKE @keyword OR sales_line_item.quantity LIKE @keyword";
+                        }
+                        else
+                        {
+                            query = "SELECT * FROM sales_line_item WHERE sales_order_id LIKE @keyword OR quantity LIKE @keyword";
+                        }
                     }
                     else if (state == 9)
                     {
@@ -490,7 +538,7 @@ namespace Willprint_Reservation_System
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error: " + ex.Message);
+                    MessageBox.Show("Error: " + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
 

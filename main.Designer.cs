@@ -29,10 +29,15 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.logout = new System.Windows.Forms.Button();
+            this.generate = new System.Windows.Forms.Button();
+            this.delete = new System.Windows.Forms.Button();
+            this.update = new System.Windows.Forms.Button();
+            this.insert = new System.Windows.Forms.Button();
             this.search = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.searchbar = new System.Windows.Forms.TextBox();
-            this.insert = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.button7 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
@@ -44,16 +49,12 @@
             this.button11 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.update = new System.Windows.Forms.Button();
-            this.delete = new System.Windows.Forms.Button();
-            this.generate = new System.Windows.Forms.Button();
-            this.logout = new System.Windows.Forms.Button();
+            this.dynaSearch = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.search.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel2.SuspendLayout();
-            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -64,18 +65,93 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(187, 652);
+            this.panel1.Size = new System.Drawing.Size(216, 652);
             this.panel1.TabIndex = 0;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.logout);
+            this.panel3.Controls.Add(this.generate);
+            this.panel3.Controls.Add(this.delete);
+            this.panel3.Controls.Add(this.update);
+            this.panel3.Controls.Add(this.insert);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel3.Location = new System.Drawing.Point(0, 44);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(216, 273);
+            this.panel3.TabIndex = 7;
+            // 
+            // logout
+            // 
+            this.logout.BackColor = System.Drawing.Color.White;
+            this.logout.Dock = System.Windows.Forms.DockStyle.Top;
+            this.logout.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.logout.Location = new System.Drawing.Point(0, 216);
+            this.logout.Name = "logout";
+            this.logout.Size = new System.Drawing.Size(216, 54);
+            this.logout.TabIndex = 12;
+            this.logout.Text = "Logout";
+            this.logout.UseVisualStyleBackColor = false;
+            // 
+            // generate
+            // 
+            this.generate.BackColor = System.Drawing.Color.White;
+            this.generate.Dock = System.Windows.Forms.DockStyle.Top;
+            this.generate.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.generate.Location = new System.Drawing.Point(0, 162);
+            this.generate.Name = "generate";
+            this.generate.Size = new System.Drawing.Size(216, 54);
+            this.generate.TabIndex = 11;
+            this.generate.Text = "Generate Report";
+            this.generate.UseVisualStyleBackColor = false;
+            // 
+            // delete
+            // 
+            this.delete.BackColor = System.Drawing.Color.White;
+            this.delete.Dock = System.Windows.Forms.DockStyle.Top;
+            this.delete.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.delete.Location = new System.Drawing.Point(0, 108);
+            this.delete.Name = "delete";
+            this.delete.Size = new System.Drawing.Size(216, 54);
+            this.delete.TabIndex = 10;
+            this.delete.Text = "Delete Data";
+            this.delete.UseVisualStyleBackColor = false;
+            // 
+            // update
+            // 
+            this.update.BackColor = System.Drawing.Color.White;
+            this.update.Dock = System.Windows.Forms.DockStyle.Top;
+            this.update.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.update.Location = new System.Drawing.Point(0, 54);
+            this.update.Name = "update";
+            this.update.Size = new System.Drawing.Size(216, 54);
+            this.update.TabIndex = 9;
+            this.update.Text = "Save Changes";
+            this.update.UseVisualStyleBackColor = false;
+            // 
+            // insert
+            // 
+            this.insert.BackColor = System.Drawing.Color.White;
+            this.insert.Dock = System.Windows.Forms.DockStyle.Top;
+            this.insert.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.insert.Location = new System.Drawing.Point(0, 0);
+            this.insert.Name = "insert";
+            this.insert.Size = new System.Drawing.Size(216, 54);
+            this.insert.TabIndex = 1;
+            this.insert.Text = "Insert Data";
+            this.insert.UseVisualStyleBackColor = false;
+            this.insert.Click += new System.EventHandler(this.button2_Click_1);
+            // 
             // search
             // 
+            this.search.Controls.Add(this.dynaSearch);
             this.search.Controls.Add(this.button1);
             this.search.Controls.Add(this.searchbar);
             this.search.Dock = System.Windows.Forms.DockStyle.Top;
             this.search.Location = new System.Drawing.Point(0, 0);
             this.search.Name = "search";
-            this.search.Size = new System.Drawing.Size(187, 44);
+            this.search.Size = new System.Drawing.Size(216, 44);
             this.search.TabIndex = 3;
             this.search.Paint += new System.Windows.Forms.PaintEventHandler(this.search_Paint);
             // 
@@ -96,30 +172,17 @@
             this.searchbar.Dock = System.Windows.Forms.DockStyle.Top;
             this.searchbar.Location = new System.Drawing.Point(0, 0);
             this.searchbar.Name = "searchbar";
-            this.searchbar.Size = new System.Drawing.Size(187, 20);
+            this.searchbar.Size = new System.Drawing.Size(216, 20);
             this.searchbar.TabIndex = 3;
-            // 
-            // insert
-            // 
-            this.insert.BackColor = System.Drawing.Color.White;
-            this.insert.Dock = System.Windows.Forms.DockStyle.Top;
-            this.insert.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.insert.Location = new System.Drawing.Point(0, 0);
-            this.insert.Name = "insert";
-            this.insert.Size = new System.Drawing.Size(187, 54);
-            this.insert.TabIndex = 1;
-            this.insert.Text = "Insert Data";
-            this.insert.UseVisualStyleBackColor = false;
-            this.insert.Click += new System.EventHandler(this.button2_Click_1);
             // 
             // dataGridView1
             // 
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(187, 0);
+            this.dataGridView1.Location = new System.Drawing.Point(216, 0);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(863, 652);
+            this.dataGridView1.Size = new System.Drawing.Size(834, 652);
             this.dataGridView1.TabIndex = 1;
             // 
             // button7
@@ -252,71 +315,20 @@
             this.panel2.Controls.Add(this.button8);
             this.panel2.Controls.Add(this.button7);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(187, 603);
+            this.panel2.Location = new System.Drawing.Point(216, 603);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(863, 49);
+            this.panel2.Size = new System.Drawing.Size(834, 49);
             this.panel2.TabIndex = 2;
             // 
-            // panel3
+            // dynaSearch
             // 
-            this.panel3.Controls.Add(this.logout);
-            this.panel3.Controls.Add(this.generate);
-            this.panel3.Controls.Add(this.delete);
-            this.panel3.Controls.Add(this.update);
-            this.panel3.Controls.Add(this.insert);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel3.Location = new System.Drawing.Point(0, 44);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(187, 273);
-            this.panel3.TabIndex = 7;
-            // 
-            // update
-            // 
-            this.update.BackColor = System.Drawing.Color.White;
-            this.update.Dock = System.Windows.Forms.DockStyle.Top;
-            this.update.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.update.Location = new System.Drawing.Point(0, 54);
-            this.update.Name = "update";
-            this.update.Size = new System.Drawing.Size(187, 54);
-            this.update.TabIndex = 9;
-            this.update.Text = "Save Changes";
-            this.update.UseVisualStyleBackColor = false;
-            // 
-            // delete
-            // 
-            this.delete.BackColor = System.Drawing.Color.White;
-            this.delete.Dock = System.Windows.Forms.DockStyle.Top;
-            this.delete.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.delete.Location = new System.Drawing.Point(0, 108);
-            this.delete.Name = "delete";
-            this.delete.Size = new System.Drawing.Size(187, 54);
-            this.delete.TabIndex = 10;
-            this.delete.Text = "Delete Data";
-            this.delete.UseVisualStyleBackColor = false;
-            // 
-            // generate
-            // 
-            this.generate.BackColor = System.Drawing.Color.White;
-            this.generate.Dock = System.Windows.Forms.DockStyle.Top;
-            this.generate.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.generate.Location = new System.Drawing.Point(0, 162);
-            this.generate.Name = "generate";
-            this.generate.Size = new System.Drawing.Size(187, 54);
-            this.generate.TabIndex = 11;
-            this.generate.Text = "Generate Report";
-            this.generate.UseVisualStyleBackColor = false;
-            // 
-            // logout
-            // 
-            this.logout.BackColor = System.Drawing.Color.White;
-            this.logout.Dock = System.Windows.Forms.DockStyle.Top;
-            this.logout.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.logout.Location = new System.Drawing.Point(0, 216);
-            this.logout.Name = "logout";
-            this.logout.Size = new System.Drawing.Size(187, 54);
-            this.logout.TabIndex = 12;
-            this.logout.Text = "Logout";
-            this.logout.UseVisualStyleBackColor = false;
+            this.dynaSearch.AutoSize = true;
+            this.dynaSearch.Location = new System.Drawing.Point(112, 24);
+            this.dynaSearch.Name = "dynaSearch";
+            this.dynaSearch.Size = new System.Drawing.Size(104, 17);
+            this.dynaSearch.TabIndex = 3;
+            this.dynaSearch.Text = "Dynamic Search";
+            this.dynaSearch.UseVisualStyleBackColor = true;
             // 
             // main
             // 
@@ -330,11 +342,11 @@
             this.Text = "Willprint Recording System";
             this.Load += new System.EventHandler(this.Form2_Load);
             this.panel1.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
             this.search.ResumeLayout(false);
             this.search.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel2.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -362,5 +374,6 @@
         private System.Windows.Forms.Button generate;
         private System.Windows.Forms.Button delete;
         private System.Windows.Forms.Button update;
+        private System.Windows.Forms.CheckBox dynaSearch;
     }
 }
