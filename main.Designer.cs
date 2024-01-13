@@ -36,6 +36,7 @@
             this.update = new System.Windows.Forms.Button();
             this.insert = new System.Windows.Forms.Button();
             this.search = new System.Windows.Forms.Panel();
+            this.dynaSearch = new System.Windows.Forms.CheckBox();
             this.button1 = new System.Windows.Forms.Button();
             this.searchbar = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -49,7 +50,6 @@
             this.button11 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.dynaSearch = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.search.SuspendLayout();
@@ -105,6 +105,7 @@
             this.generate.TabIndex = 11;
             this.generate.Text = "Generate Report";
             this.generate.UseVisualStyleBackColor = false;
+            this.generate.Click += new System.EventHandler(this.generate_Click);
             // 
             // delete
             // 
@@ -129,6 +130,7 @@
             this.update.TabIndex = 9;
             this.update.Text = "Save Changes";
             this.update.UseVisualStyleBackColor = false;
+            this.update.Click += new System.EventHandler(this.update_Click);
             // 
             // insert
             // 
@@ -154,6 +156,17 @@
             this.search.Size = new System.Drawing.Size(216, 44);
             this.search.TabIndex = 3;
             this.search.Paint += new System.Windows.Forms.PaintEventHandler(this.search_Paint);
+            // 
+            // dynaSearch
+            // 
+            this.dynaSearch.AutoSize = true;
+            this.dynaSearch.Location = new System.Drawing.Point(112, 24);
+            this.dynaSearch.Name = "dynaSearch";
+            this.dynaSearch.Size = new System.Drawing.Size(104, 17);
+            this.dynaSearch.TabIndex = 3;
+            this.dynaSearch.Text = "Dynamic Search";
+            this.dynaSearch.UseVisualStyleBackColor = true;
+            this.dynaSearch.CheckedChanged += new System.EventHandler(this.dynaSearch_CheckedChanged);
             // 
             // button1
             // 
@@ -320,17 +333,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1154, 49);
             this.panel2.TabIndex = 2;
-            // 
-            // dynaSearch
-            // 
-            this.dynaSearch.AutoSize = true;
-            this.dynaSearch.Location = new System.Drawing.Point(112, 24);
-            this.dynaSearch.Name = "dynaSearch";
-            this.dynaSearch.Size = new System.Drawing.Size(104, 17);
-            this.dynaSearch.TabIndex = 3;
-            this.dynaSearch.Text = "Dynamic Search";
-            this.dynaSearch.UseVisualStyleBackColor = true;
-            this.dynaSearch.CheckedChanged += new System.EventHandler(this.dynaSearch_CheckedChanged);
             // 
             // main
             // 

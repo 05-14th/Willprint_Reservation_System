@@ -1,7 +1,9 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Data;
+using System.Threading.Tasks;
 using System.Windows.Forms;
+using OfficeOpenXml;
 
 namespace Willprint_Reservation_System
 {
@@ -581,5 +583,136 @@ namespace Willprint_Reservation_System
                 e.Handled = true; 
             }
         }
+
+        private async Task UpdateChangesToDatabase()
+        {
+            DataTable dataTableToUpdate = new DataTable();
+            string tableName = null;
+
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                using (MySqlDataAdapter dataAdapter = new MySqlDataAdapter())
+                {
+                    MySqlCommandBuilder commandBuilder;
+
+                    switch (state)
+                    {
+                        case 1:
+                            tableName = "customers";
+                            break;
+                        case 2:
+                            tableName = "employee";
+                            break;
+                        case 3:
+                            tableName = "sales_order";
+                            break;
+                        case 4:
+                            tableName = "payment";
+                            break;
+                        case 5:
+                            tableName = "purchase_order";
+                            break;
+                        case 6:
+                            tableName = "inventory";
+                            break;
+                        case 7:
+                            tableName = "order_line_item";
+                            break;
+                        case 8:
+                            tableName = "sales_line_item";
+                            break;
+                        case 9:
+                            tableName = "product_and_services";
+                            break;
+                        default:
+                            break;
+                    }
+
+                    dataAdapter.SelectCommand = new MySqlCommand($"SELECT * FROM {tableName}", connection);
+                    dataTableToUpdate = ((DataTable)dataGridView1.DataSource).GetChanges();
+
+                    if (dataTableToUpdate != null)
+                    {
+                        commandBuilder = new MySqlCommandBuilder(dataAdapter);
+                        dataAdapter.InsertCommand = commandBuilder.GetInsertCommand();
+                        dataAdapter.UpdateCommand = commandBuilder.GetUpdateCommand();
+                        dataAdapter.DeleteCommand = commandBuilder.GetDeleteCommand();
+
+                        try
+                        {
+                            await connection.OpenAsync();
+
+                            // Start a transaction
+                            using (MySqlTransaction transaction = connection.BeginTransaction())
+                            {
+                                dataAdapter.SelectCommand.Transaction = transaction;
+                                dataAdapter.InsertCommand.Transaction = transaction;
+                                dataAdapter.UpdateCommand.Transaction = transaction;
+                                dataAdapter.DeleteCommand.Transaction = transaction;
+                                dataAdapter.Update(dataTableToUpdate);
+                                transaction.Commit();
+                                dataGridView1.DataSource = null;
+                                LoadDataIntoDataGridView();    
+                            }
+                        }
+                        catch (DBConcurrencyException ex)
+                        {
+                            MessageBox.Show("Concurrency conflict occurred. Please avoid simultaneous update and try again.", "Conflict", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                            dataTableToUpdate.RejectChanges();
+                            LoadDataIntoDataGridView();
+                        }
+                    }
+                }
+            }
+        }
+
+        private void update_Click(object sender, EventArgs e)
+        {
+            UpdateChangesToDatabase();
+        }
+
+        private void generate_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (ExcelPackage excelPackage = new ExcelPackage())
+                {
+                    ExcelWorksheet worksheet = excelPackage.Workbook.Worksheets.Add("Sheet1");
+
+                    for (int i = 1; i <= dataGridView1.Columns.Count; i++)
+                    {
+                        worksheet.Cells[1, i].Value = dataGridView1.Columns[i - 1].HeaderText;
+                    }
+
+                
+                    for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                    {
+                        for (int j = 0; j < dataGridView1.Columns.Count; j++)
+                        {
+                            worksheet.Cells[i + 2, j + 1].Value = dataGridView1.Rows[i].Cells[j].Value;
+                        }
+                    }
+
+                    SaveFileDialog saveFileDialog = new SaveFileDialog
+                    {
+                        Filter = "Excel files (*.xlsx)|*.xlsx",
+                        Title = "Save Excel File",
+                        FileName = "YourFileName.xlsx" 
+                    };
+
+                    if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                    
+                        excelPackage.SaveAs(new System.IO.FileInfo(saveFileDialog.FileName));
+                        MessageBox.Show("Export successful!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error exporting to Excel: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
     }
 }
+
