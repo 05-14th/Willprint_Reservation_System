@@ -19,13 +19,7 @@ namespace Willprint_Reservation_System
 
         private void InitializeUI()
         {
-           
-            search.Dock = DockStyle.Top;
-            insert.Dock = DockStyle.Top;
-            update.Dock = DockStyle.Top;
-            delete.Dock = DockStyle.Top;
-            generate.Dock = DockStyle.Top;
-            logout.Dock = DockStyle.Top;
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -474,7 +468,8 @@ namespace Willprint_Reservation_System
                         if (dynaSearch.Checked)
                         {
                             query = $" SELECT * FROM sales_order LEFT JOIN sales_line_item ON sales_order.sales_order_id = sales_line_item.sales_order_id " +
-                                $"LEFT JOIN customers ON customers.customer_id = sales_order.customer_id WHERE customers.customer_id LIKE @keyword OR customers.name LIKE @keyword";
+                                $"LEFT JOIN customers ON customers.customer_id = sales_order.customer_id " +
+                                $"LEFT JOIN product_and_services ON product_and_services.ps_id = sales_order.ps_id WHERE customers.customer_id LIKE @keyword OR customers.name LIKE @keyword";
                         }
                         else
                         {
@@ -483,7 +478,14 @@ namespace Willprint_Reservation_System
                     }
                     else if (state == 4)
                     {
-                        query = $"SELECT * FROM payment WHERE customer_id LIKE @keyword OR amount LIKE @keyword";
+                        if (dynaSearch.Checked)
+                        {
+                            query = "SELECT * FROM payment LEFT JOIN customers ON payment.customer_id = customers.customer_id WHERE customers.name LIKE @keyword OR payment.amount LIKE @keyword OR payment.customer_id LIKE @keyword";
+                        }
+                        else
+                        {
+                            query = $"SELECT * FROM payment WHERE customer_id LIKE @keyword OR amount LIKE @keyword";
+                        }
                     }
                     else if (state == 5)
                     {
@@ -501,7 +503,16 @@ namespace Willprint_Reservation_System
                     }
                     else if (state == 7)
                     {
-                        query = $"SELECT * FROM order_line_item WHERE product_id LIKE @keyword OR purchase_order_id LIKE @keyword";
+                        if (dynaSearch.Checked)
+                        {
+                            query = "SELECT * FROM order_line_item LEFT JOIN inventory ON order_line_item.product_id = inventory.product_id " +
+                                "LEFT JOIN purchase_order ON order_line_item.purchase_order_id = purchase_order.purchase_order_id " +
+                                "WHERE order_line_item.product_id LIKE @keyword OR inventory.name LIKE @keyword OR order_line_item.purchase_order_id LIKE @keyword";
+                        }
+                        else
+                        {
+                            query = $"SELECT * FROM order_line_item WHERE product_id LIKE @keyword OR purchase_order_id LIKE @keyword";
+                        }
                     }
                     else if (state == 8)
                     {
@@ -518,6 +529,7 @@ namespace Willprint_Reservation_System
                     {
                         query = $"SELECT * FROM product_and_services WHERE pas LIKE @keyword OR price LIKE @keyword";
                     }
+
 
                     if (!string.IsNullOrEmpty(query))
                     {
@@ -542,6 +554,32 @@ namespace Willprint_Reservation_System
                 }
             }
 
+        }
+
+        private void dynaSearch_CheckedChanged(object sender, EventArgs e)
+        {
+            if (dynaSearch.Checked)
+            {
+                delete.Enabled = false;
+                update.Enabled = false;
+                dataGridView1.ReadOnly = true;
+                dataGridView1.KeyDown += dataGridView1_KeyDown;
+            }
+            else
+            {
+                delete.Enabled = true;
+                update.Enabled = true;
+                dataGridView1.ReadOnly = false;
+                dataGridView1.KeyDown -= dataGridView1_KeyDown;
+            }
+        }
+
+        private void dataGridView1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Delete)
+            {
+                e.Handled = true; 
+            }
         }
     }
 }

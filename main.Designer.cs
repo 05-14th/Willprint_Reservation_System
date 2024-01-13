@@ -182,7 +182,7 @@
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(216, 0);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(834, 652);
+            this.dataGridView1.Size = new System.Drawing.Size(1154, 652);
             this.dataGridView1.TabIndex = 1;
             // 
             // button7
@@ -192,7 +192,7 @@
             this.button7.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button7.Location = new System.Drawing.Point(0, 0);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(130, 49);
+            this.button7.Size = new System.Drawing.Size(125, 49);
             this.button7.TabIndex = 6;
             this.button7.Text = "Customer";
             this.button7.UseVisualStyleBackColor = false;
@@ -203,9 +203,9 @@
             this.button8.BackColor = System.Drawing.Color.White;
             this.button8.Dock = System.Windows.Forms.DockStyle.Left;
             this.button8.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button8.Location = new System.Drawing.Point(130, 0);
+            this.button8.Location = new System.Drawing.Point(125, 0);
             this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(130, 49);
+            this.button8.Size = new System.Drawing.Size(125, 49);
             this.button8.TabIndex = 7;
             this.button8.Text = "Employee";
             this.button8.UseVisualStyleBackColor = false;
@@ -216,9 +216,9 @@
             this.button9.BackColor = System.Drawing.Color.White;
             this.button9.Dock = System.Windows.Forms.DockStyle.Left;
             this.button9.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button9.Location = new System.Drawing.Point(260, 0);
+            this.button9.Location = new System.Drawing.Point(250, 0);
             this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(130, 49);
+            this.button9.Size = new System.Drawing.Size(125, 49);
             this.button9.TabIndex = 8;
             this.button9.Text = "Sales Order";
             this.button9.UseVisualStyleBackColor = false;
@@ -229,9 +229,9 @@
             this.button15.BackColor = System.Drawing.Color.White;
             this.button15.Dock = System.Windows.Forms.DockStyle.Left;
             this.button15.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button15.Location = new System.Drawing.Point(1040, 0);
+            this.button15.Location = new System.Drawing.Point(1000, 0);
             this.button15.Name = "button15";
-            this.button15.Size = new System.Drawing.Size(130, 49);
+            this.button15.Size = new System.Drawing.Size(125, 49);
             this.button15.TabIndex = 14;
             this.button15.Text = "Product and Services";
             this.button15.UseVisualStyleBackColor = false;
@@ -242,9 +242,9 @@
             this.button14.BackColor = System.Drawing.Color.White;
             this.button14.Dock = System.Windows.Forms.DockStyle.Left;
             this.button14.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button14.Location = new System.Drawing.Point(910, 0);
+            this.button14.Location = new System.Drawing.Point(875, 0);
             this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(130, 49);
+            this.button14.Size = new System.Drawing.Size(125, 49);
             this.button14.TabIndex = 13;
             this.button14.Text = "Sales Line Item";
             this.button14.UseVisualStyleBackColor = false;
@@ -255,9 +255,9 @@
             this.button13.BackColor = System.Drawing.Color.White;
             this.button13.Dock = System.Windows.Forms.DockStyle.Left;
             this.button13.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button13.Location = new System.Drawing.Point(780, 0);
+            this.button13.Location = new System.Drawing.Point(750, 0);
             this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(130, 49);
+            this.button13.Size = new System.Drawing.Size(125, 49);
             this.button13.TabIndex = 12;
             this.button13.Text = "Order Line Item";
             this.button13.UseVisualStyleBackColor = false;
@@ -268,9 +268,9 @@
             this.button12.BackColor = System.Drawing.Color.White;
             this.button12.Dock = System.Windows.Forms.DockStyle.Left;
             this.button12.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button12.Location = new System.Drawing.Point(650, 0);
+            this.button12.Location = new System.Drawing.Point(625, 0);
             this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(130, 49);
+            this.button12.Size = new System.Drawing.Size(125, 49);
             this.button12.TabIndex = 11;
             this.button12.Text = "Inventory";
             this.button12.UseVisualStyleBackColor = false;
@@ -281,9 +281,9 @@
             this.button11.BackColor = System.Drawing.Color.White;
             this.button11.Dock = System.Windows.Forms.DockStyle.Left;
             this.button11.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button11.Location = new System.Drawing.Point(520, 0);
+            this.button11.Location = new System.Drawing.Point(500, 0);
             this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(130, 49);
+            this.button11.Size = new System.Drawing.Size(125, 49);
             this.button11.TabIndex = 10;
             this.button11.Text = "Purchase Order";
             this.button11.UseVisualStyleBackColor = false;
@@ -294,9 +294,9 @@
             this.button10.BackColor = System.Drawing.Color.White;
             this.button10.Dock = System.Windows.Forms.DockStyle.Left;
             this.button10.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button10.Location = new System.Drawing.Point(390, 0);
+            this.button10.Location = new System.Drawing.Point(375, 0);
             this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(130, 49);
+            this.button10.Size = new System.Drawing.Size(125, 49);
             this.button10.TabIndex = 9;
             this.button10.Text = "Payment";
             this.button10.UseVisualStyleBackColor = false;
@@ -304,6 +304,7 @@
             // 
             // panel2
             // 
+            this.panel2.AutoScroll = true;
             this.panel2.BackColor = System.Drawing.Color.Crimson;
             this.panel2.Controls.Add(this.button15);
             this.panel2.Controls.Add(this.button14);
@@ -317,7 +318,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel2.Location = new System.Drawing.Point(216, 603);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(834, 49);
+            this.panel2.Size = new System.Drawing.Size(1154, 49);
             this.panel2.TabIndex = 2;
             // 
             // dynaSearch
@@ -329,12 +330,13 @@
             this.dynaSearch.TabIndex = 3;
             this.dynaSearch.Text = "Dynamic Search";
             this.dynaSearch.UseVisualStyleBackColor = true;
+            this.dynaSearch.CheckedChanged += new System.EventHandler(this.dynaSearch_CheckedChanged);
             // 
             // main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1050, 652);
+            this.ClientSize = new System.Drawing.Size(1370, 652);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.panel1);
