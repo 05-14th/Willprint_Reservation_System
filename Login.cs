@@ -34,9 +34,9 @@ namespace Willprint_Reservation_System
 
             if (CheckLogin(username, password))
             {
-                this.Hide();
                 main form2 = new main();
                 form2.ShowDialog();
+                this.Close();
             }
             else
             {

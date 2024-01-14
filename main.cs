@@ -669,7 +669,12 @@ namespace Willprint_Reservation_System
 
         private void update_Click(object sender, EventArgs e)
         {
-            UpdateChangesToDatabase();
+            DialogResult result = MessageBox.Show("Saving Changes will overwrite existing data. Are you sure to save changes?", "Save Changes", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if(result == DialogResult.Yes)
+            {
+                UpdateChangesToDatabase();
+            }
+            LoadDataIntoDataGridView();
         }
 
         private void generate_Click(object sender, EventArgs e)
@@ -702,10 +707,11 @@ namespace Willprint_Reservation_System
                     };
 
                     if (saveFileDialog.ShowDialog() == DialogResult.OK)
-                    
+                    {
                         excelPackage.SaveAs(new System.IO.FileInfo(saveFileDialog.FileName));
                         MessageBox.Show("Export successful!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
+                    }   
+                }
             }
             catch (Exception ex)
             {
