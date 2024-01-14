@@ -37,14 +37,13 @@ namespace Willprint_Reservation_System
             
             for (int i = 1; i <= 1000000; i++)
             {
-                Login login = new Login();
                 string id = "PO-" + formatDate() + "-" + i;
 
                 bool idExists = CheckIDExists(connection, id);
 
                 if (!idExists)
                 {
-                    InsertID(connection, id, poDateSelector.Value, poStatus.Text, login.loginUser);
+                    InsertID(connection, id, poDateSelector.Value, poStatus.Text, Login.loginUser);
                     break;
                 }
             }

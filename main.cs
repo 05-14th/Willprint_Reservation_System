@@ -4,6 +4,7 @@ using System.Data;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using OfficeOpenXml;
+using System.IO;
 
 namespace Willprint_Reservation_System
 {
@@ -16,17 +17,16 @@ namespace Willprint_Reservation_System
         {
             InitializeComponent();
             LoadDataIntoDataGridView();
-            InitializeUI();
+            CheckUserRoles();
         }
 
-        private void InitializeUI()
+        private void CheckUserRoles()
         {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-           
+            if (Login.roles != "Admin")
+            {
+                delete.Enabled = false;
+                update.Enabled = false;
+            }
         }
 
         private void Form2_Load(object sender, EventArgs e)
@@ -38,7 +38,6 @@ namespace Willprint_Reservation_System
         {
             state = 6;
             LoadDataIntoDataGridView();
-             
         }
 
         private void button8_Click(object sender, EventArgs e)
@@ -74,11 +73,6 @@ namespace Willprint_Reservation_System
             state = 1;
             LoadDataIntoDataGridView();
              
-        }
-
-        private void button14_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void LoadDataIntoDataGridView()
@@ -146,33 +140,85 @@ namespace Willprint_Reservation_System
             }
         }
 
-        // This assumes you have a DataGridView named dataGridView1
-        // You need to handle inserts, updates, and deletes separately
-
-        // For updating changes
-        private void UpdateChangesToDatabase(string db)
+        public async Task UpdateChangesToDatabase()
         {
+            DataTable dataTableToUpdate = new DataTable();
+            string tableName = null;
+
             using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
-                try
+                using (MySqlDataAdapter dataAdapter = new MySqlDataAdapter())
                 {
-                    connection.Open();
-                    MySqlDataAdapter adapter = new MySqlDataAdapter($"SELECT * FROM {db}", connection);
-                    MySqlCommandBuilder commandBuilder = new MySqlCommandBuilder(adapter);
+                    MySqlCommandBuilder commandBuilder;
 
-                    DataTable changes = ((DataTable)dataGridView1.DataSource).GetChanges();
-
-                    if (changes != null)
+                    switch (state)
                     {
-                        adapter.Update(changes);
-                        ((DataTable)dataGridView1.DataSource).AcceptChanges();
-                        MessageBox.Show("Changes saved to the database.");
+                        case 1:
+                            tableName = "customers";
+                            break;
+                        case 2:
+                            tableName = "employee";
+                            break;
+                        case 3:
+                            tableName = "sales_order";
+                            break;
+                        case 4:
+                            tableName = "payment";
+                            break;
+                        case 5:
+                            tableName = "purchase_order";
+                            break;
+                        case 6:
+                            tableName = "inventory";
+                            break;
+                        case 7:
+                            tableName = "order_line_item";
+                            break;
+                        case 8:
+                            tableName = "sales_line_item";
+                            break;
+                        case 9:
+                            tableName = "product_and_services";
+                            break;
+                        default:
+                            break;
                     }
-                    connection.Close();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error: " + ex.Message);
+
+                    dataAdapter.SelectCommand = new MySqlCommand($"SELECT * FROM {tableName}", connection);
+                    dataTableToUpdate = ((DataTable)dataGridView1.DataSource).GetChanges();
+
+                    if (dataTableToUpdate != null)
+                    {
+                        commandBuilder = new MySqlCommandBuilder(dataAdapter);
+                        dataAdapter.InsertCommand = commandBuilder.GetInsertCommand();
+                        dataAdapter.UpdateCommand = commandBuilder.GetUpdateCommand();
+                        dataAdapter.DeleteCommand = commandBuilder.GetDeleteCommand();
+
+                        try
+                        {
+                            await connection.OpenAsync();
+
+                            // Start a transaction
+                            using (MySqlTransaction transaction = connection.BeginTransaction())
+                            {
+                                dataAdapter.SelectCommand.Transaction = transaction;
+                                dataAdapter.InsertCommand.Transaction = transaction;
+                                dataAdapter.UpdateCommand.Transaction = transaction;
+                                dataAdapter.DeleteCommand.Transaction = transaction;
+                                dataAdapter.Update(dataTableToUpdate);
+                                transaction.Commit();
+                                dataGridView1.DataSource = null;
+                                LoadDataIntoDataGridView();
+                            }
+                        }
+                        catch (DBConcurrencyException ex)
+                        {
+                            MessageBox.Show("Concurrency conflict occurred. Please avoid simultaneous update and try again.", "Conflict", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                            dataTableToUpdate.RejectChanges();
+                            LoadDataIntoDataGridView();
+                        }
+                    }
                 }
             }
         }
@@ -197,146 +243,6 @@ namespace Willprint_Reservation_System
             state = 9;
             LoadDataIntoDataGridView();
              
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            {
-                using (MySqlConnection connection = new MySqlConnection(connectionString))
-                {
-                    try
-                    {
-                        connection.Open();
-
-                        // Query to fetch data from a table (Replace TableName with your table name)
-                        if (state == 1)
-                        {
-                            customers form3 = new customers();
-                            form3.ShowDialog();
-                             
-                        }
-                        else if (state == 2)
-                        {
-                            employee form4 = new employee();
-                            form4.ShowDialog();
-                             
-                        }
-                        else if (state == 3)
-                        {
-                            salerOrder form5 = new salerOrder();
-                            form5.ShowDialog();
-                             
-                        }
-                        else if (state == 4)
-                        {
-                            payment form6 = new payment();
-                            form6.ShowDialog();
-                             
-                        }
-                        else if (state == 5)
-                        {
-                            purchase_order form7 = new purchase_order();
-                            form7.ShowDialog();
-                             
-                        }
-                        else if (state == 6)
-                        {
-                            inventory form11 = new inventory();
-                            form11.ShowDialog();
-                             
-                        }
-                        else if (state == 7)
-                        {
-                            orderLineItem form8 = new orderLineItem();
-                            form8.ShowDialog();
-                             
-                        }
-                        else if (state == 8)
-                        {
-                            salesLineItem form9 = new salesLineItem();
-                            form9.ShowDialog();
-                             
-                        }
-                        else if (state == 9)
-                        {
-                            products form10 = new products();
-                            form10.ShowDialog();
-                             
-                        }
-
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Error: " + ex.Message);
-                    }
-                }
-            }
-        }
-
-        private void refreshTable()
-        {
-            DataTable dataTable = new DataTable();
-            dataGridView1.DataSource = null;
-            LoadDataIntoDataGridView();
-        }
-
-        private void button5_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            if(state == 1)
-            {
-                UpdateChangesToDatabase("customers");
-                refreshTable();
-            }
-            else if (state == 2)
-            {
-                UpdateChangesToDatabase("employee");
-                refreshTable();
-            }
-            else if (state == 3)
-            {
-                UpdateChangesToDatabase("sales_order");
-                refreshTable();
-            }
-            else if (state == 4)
-            {
-                UpdateChangesToDatabase("payment");
-                refreshTable();
-            }
-            else if (state == 5)
-            {
-                UpdateChangesToDatabase("purchase_order");
-                refreshTable();
-            }
-            else if (state == 6)
-            {
-                UpdateChangesToDatabase("inventory");
-                refreshTable();
-            }
-            else if (state == 7)
-            {
-                UpdateChangesToDatabase("order_line_item");
-                refreshTable();
-            }
-            else if (state == 8)
-            {
-                UpdateChangesToDatabase("sales_line_item");
-                refreshTable();
-            }
-            else if (state == 9)
-            {
-                UpdateChangesToDatabase("product_and_services");
-                refreshTable();
-            }
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            this.Close();
         }
 
         private void button2_Click_1(object sender, EventArgs e)
@@ -395,18 +301,6 @@ namespace Willprint_Reservation_System
                 productsUi.ShowDialog();
                 LoadDataIntoDataGridView();
             }
-        }
-
-        private void button16_Click(object sender, EventArgs e)
-        {
-           
-        }
-
-        private void button17_Click(object sender, EventArgs e)
-        {
-            this.Close();
-            Login loginUi = new Login();
-            loginUi.Show();
         }
 
         private void search_Paint(object sender, PaintEventArgs e)
@@ -584,89 +478,6 @@ namespace Willprint_Reservation_System
             }
         }
 
-        private async Task UpdateChangesToDatabase()
-        {
-            DataTable dataTableToUpdate = new DataTable();
-            string tableName = null;
-
-            using (MySqlConnection connection = new MySqlConnection(connectionString))
-            {
-                using (MySqlDataAdapter dataAdapter = new MySqlDataAdapter())
-                {
-                    MySqlCommandBuilder commandBuilder;
-
-                    switch (state)
-                    {
-                        case 1:
-                            tableName = "customers";
-                            break;
-                        case 2:
-                            tableName = "employee";
-                            break;
-                        case 3:
-                            tableName = "sales_order";
-                            break;
-                        case 4:
-                            tableName = "payment";
-                            break;
-                        case 5:
-                            tableName = "purchase_order";
-                            break;
-                        case 6:
-                            tableName = "inventory";
-                            break;
-                        case 7:
-                            tableName = "order_line_item";
-                            break;
-                        case 8:
-                            tableName = "sales_line_item";
-                            break;
-                        case 9:
-                            tableName = "product_and_services";
-                            break;
-                        default:
-                            break;
-                    }
-
-                    dataAdapter.SelectCommand = new MySqlCommand($"SELECT * FROM {tableName}", connection);
-                    dataTableToUpdate = ((DataTable)dataGridView1.DataSource).GetChanges();
-
-                    if (dataTableToUpdate != null)
-                    {
-                        commandBuilder = new MySqlCommandBuilder(dataAdapter);
-                        dataAdapter.InsertCommand = commandBuilder.GetInsertCommand();
-                        dataAdapter.UpdateCommand = commandBuilder.GetUpdateCommand();
-                        dataAdapter.DeleteCommand = commandBuilder.GetDeleteCommand();
-
-                        try
-                        {
-                            await connection.OpenAsync();
-
-                            // Start a transaction
-                            using (MySqlTransaction transaction = connection.BeginTransaction())
-                            {
-                                dataAdapter.SelectCommand.Transaction = transaction;
-                                dataAdapter.InsertCommand.Transaction = transaction;
-                                dataAdapter.UpdateCommand.Transaction = transaction;
-                                dataAdapter.DeleteCommand.Transaction = transaction;
-                                dataAdapter.Update(dataTableToUpdate);
-                                transaction.Commit();
-                                dataGridView1.DataSource = null;
-                                LoadDataIntoDataGridView();    
-                            }
-                        }
-                        catch (DBConcurrencyException ex)
-                        {
-                            MessageBox.Show("Concurrency conflict occurred. Please avoid simultaneous update and try again.", "Conflict", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                            dataTableToUpdate.RejectChanges();
-                            LoadDataIntoDataGridView();
-                        }
-                    }
-                }
-            }
-        }
-
         private void update_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Saving Changes will overwrite existing data. Are you sure to save changes?", "Save Changes", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -719,6 +530,34 @@ namespace Willprint_Reservation_System
             }
         }
 
+        private void delete_Click(object sender, EventArgs e)
+        {
+            Delete deleteModal = new Delete();
+            deleteModal.ShowDialog();
+            LoadDataIntoDataGridView();
+        }
+
+        private void logout_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Are you sure you want to logout?", "Logout Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                string filePath = "login.txt";
+                try
+                {
+                    using (FileStream fileStream = new FileStream(filePath, FileMode.OpenOrCreate))
+                    {
+                        fileStream.SetLength(0);
+                        this.Dispose();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"An error occurred: {ex.Message}");
+                }
+            }
+        }
     }
 }
 

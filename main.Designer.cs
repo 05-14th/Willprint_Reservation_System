@@ -93,6 +93,7 @@
             this.logout.TabIndex = 12;
             this.logout.Text = "Logout";
             this.logout.UseVisualStyleBackColor = false;
+            this.logout.Click += new System.EventHandler(this.logout_Click);
             // 
             // generate
             // 
@@ -118,6 +119,7 @@
             this.delete.TabIndex = 10;
             this.delete.Text = "Delete Data";
             this.delete.UseVisualStyleBackColor = false;
+            this.delete.Click += new System.EventHandler(this.delete_Click);
             // 
             // update
             // 

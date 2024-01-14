@@ -1,6 +1,6 @@
 ﻿namespace Willprint_Reservation_System
 {
-    partial class Form1
+    partial class Delete
     {
         /// <summary>
         /// Required designer variable.
@@ -28,18 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.idBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.exeDeal = new System.Windows.Forms.Button();
             this.cancelDel = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // textBox1
+            // idBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 26);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(295, 20);
-            this.textBox1.TabIndex = 0;
+            this.idBox.Location = new System.Drawing.Point(12, 26);
+            this.idBox.Name = "idBox";
+            this.idBox.Size = new System.Drawing.Size(295, 20);
+            this.idBox.TabIndex = 0;
             // 
             // label1
             // 
@@ -62,6 +62,7 @@
             this.exeDeal.TabIndex = 2;
             this.exeDeal.Text = "Delete";
             this.exeDeal.UseVisualStyleBackColor = false;
+            this.exeDeal.Click += new System.EventHandler(this.exeDeal_Click);
             // 
             // cancelDel
             // 
@@ -84,7 +85,7 @@
             this.Controls.Add(this.cancelDel);
             this.Controls.Add(this.exeDeal);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.idBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "Form1";
             this.Text = "Delete Data";
@@ -95,7 +96,7 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox idBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button exeDeal;
         private System.Windows.Forms.Button cancelDel;

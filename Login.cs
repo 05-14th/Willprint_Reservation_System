@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -14,12 +15,14 @@ namespace Willprint_Reservation_System
 {
     public partial class Login : Form
     {
+        private string filePath = "login.txt";
         private MySqlConnection connection;
         private string server;
         private string database;
         private string uid;
         private string password;
-        public int loginUser = 104;
+        public static string roles;
+        public static int loginUser;
         public Login()
         {
             InitializeComponent();
@@ -34,9 +37,15 @@ namespace Willprint_Reservation_System
 
             if (CheckLogin(username, password))
             {
-                main form2 = new main();
-                form2.ShowDialog();
-                this.Close();
+                this.Hide();
+                string content = "true";
+                File.WriteAllText(filePath, content);
+                string fileContent = File.ReadAllText(filePath);
+                if (fileContent.Contains("true")) {
+                    main form2 = new main();
+                    form2.ShowDialog();
+                    this.Close();
+                }
             }
             else
             {
@@ -76,6 +85,8 @@ namespace Willprint_Reservation_System
 
                 if (reader.Read())
                 {
+                    loginUser = int.Parse(reader["user_id"].ToString());
+                    roles = reader["roles"].ToString();
                     result = true;
                 }
 

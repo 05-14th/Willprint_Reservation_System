@@ -5,11 +5,14 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using OfficeOpenXml;
+using System.IO;
 
 namespace Willprint_Reservation_System
 {
     internal static class Program
     {
+        private static string filePath = "login.txt";
+
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -19,7 +22,16 @@ namespace Willprint_Reservation_System
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Login());
+
+            string fileContent = File.ReadAllText(filePath);
+            if (!fileContent.Contains("true"))
+            {
+                Application.Run(new Login());
+            }
+            else
+            {
+                Application.Run(new main());
+            }
         }
     }
 }
